@@ -1,7 +1,7 @@
 ﻿
 namespace ControleAtivos
 {
-    partial class Form1
+    partial class FormularioPrincipal
     {
         /// <summary>
         /// Variável de designer necessária.
