@@ -40,7 +40,7 @@ namespace ControleAtivos
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Controle de Ativos";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
