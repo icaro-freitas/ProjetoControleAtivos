@@ -32,15 +32,17 @@ namespace ControleAtivos
             this.components = new System.ComponentModel.Container();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.Consulta = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.Consulta.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.Consulta);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(-2, -2);
             this.tabControl1.Name = "tabControl1";
@@ -48,26 +50,35 @@ namespace ControleAtivos
             this.tabControl1.Size = new System.Drawing.Size(1053, 692);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabPage1
+            // Consulta
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1045, 666);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            this.Consulta.Controls.Add(this.comboBox1);
+            this.Consulta.Location = new System.Drawing.Point(4, 22);
+            this.Consulta.Name = "Consulta";
+            this.Consulta.Padding = new System.Windows.Forms.Padding(3);
+            this.Consulta.Size = new System.Drawing.Size(1045, 666);
+            this.Consulta.TabIndex = 0;
+            this.Consulta.Text = "Consulta Ativos";
+            this.Consulta.UseVisualStyleBackColor = true;
+            this.Consulta.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(895, 666);
+            this.tabPage2.Size = new System.Drawing.Size(1045, 666);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Comunicação Serial";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(6, 6);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 0;
             // 
             // FormularioPrincipal
             // 
@@ -76,10 +87,11 @@ namespace ControleAtivos
             this.ClientSize = new System.Drawing.Size(1055, 654);
             this.Controls.Add(this.tabControl1);
             this.Name = "FormularioPrincipal";
-            this.Text = "Controle de Ativos";
+            this.Text = "Controles de Ativos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.Consulta.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -88,8 +100,9 @@ namespace ControleAtivos
 
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage Consulta;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
