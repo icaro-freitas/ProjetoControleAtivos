@@ -34,6 +34,8 @@ namespace ControleAtivos
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabConsulta = new System.Windows.Forms.TabPage();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tabGerenciaAtivos = new System.Windows.Forms.TabPage();
+            this.tabGerenciarSalas = new System.Windows.Forms.TabPage();
             this.tabComunicacaoSerial = new System.Windows.Forms.TabPage();
             this.btnProcurar = new System.Windows.Forms.Button();
             this.lblStatusComunicacao = new System.Windows.Forms.Label();
@@ -45,8 +47,6 @@ namespace ControleAtivos
             this.lblPortaCom = new System.Windows.Forms.Label();
             this.lblConfiguracoes = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.tabGerenciaAtivos = new System.Windows.Forms.TabPage();
-            this.tabGerenciarSalas = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabConsulta.SuspendLayout();
@@ -84,6 +84,26 @@ namespace ControleAtivos
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 0;
+            // 
+            // tabGerenciaAtivos
+            // 
+            this.tabGerenciaAtivos.Location = new System.Drawing.Point(4, 22);
+            this.tabGerenciaAtivos.Name = "tabGerenciaAtivos";
+            this.tabGerenciaAtivos.Padding = new System.Windows.Forms.Padding(3);
+            this.tabGerenciaAtivos.Size = new System.Drawing.Size(1045, 666);
+            this.tabGerenciaAtivos.TabIndex = 2;
+            this.tabGerenciaAtivos.Text = "Gerenciar Ativos";
+            this.tabGerenciaAtivos.UseVisualStyleBackColor = true;
+            // 
+            // tabGerenciarSalas
+            // 
+            this.tabGerenciarSalas.Location = new System.Drawing.Point(4, 22);
+            this.tabGerenciarSalas.Name = "tabGerenciarSalas";
+            this.tabGerenciarSalas.Padding = new System.Windows.Forms.Padding(3);
+            this.tabGerenciarSalas.Size = new System.Drawing.Size(1045, 666);
+            this.tabGerenciarSalas.TabIndex = 3;
+            this.tabGerenciarSalas.Text = "Gerenciar Salas";
+            this.tabGerenciarSalas.UseVisualStyleBackColor = true;
             // 
             // tabComunicacaoSerial
             // 
@@ -135,6 +155,7 @@ namespace ControleAtivos
             this.btnDesconectar.TabIndex = 6;
             this.btnDesconectar.Text = "Desconectar";
             this.btnDesconectar.UseVisualStyleBackColor = true;
+            this.btnDesconectar.Click += new System.EventHandler(this.BtnDesconectar_Click);
             // 
             // btnConectar
             // 
@@ -205,26 +226,6 @@ namespace ControleAtivos
             this.lblConfiguracoes.Size = new System.Drawing.Size(203, 31);
             this.lblConfiguracoes.TabIndex = 0;
             this.lblConfiguracoes.Text = "Configurações";
-            // 
-            // tabGerenciaAtivos
-            // 
-            this.tabGerenciaAtivos.Location = new System.Drawing.Point(4, 22);
-            this.tabGerenciaAtivos.Name = "tabGerenciaAtivos";
-            this.tabGerenciaAtivos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGerenciaAtivos.Size = new System.Drawing.Size(1045, 666);
-            this.tabGerenciaAtivos.TabIndex = 2;
-            this.tabGerenciaAtivos.Text = "Gerenciar Ativos";
-            this.tabGerenciaAtivos.UseVisualStyleBackColor = true;
-            // 
-            // tabGerenciarSalas
-            // 
-            this.tabGerenciarSalas.Location = new System.Drawing.Point(4, 22);
-            this.tabGerenciarSalas.Name = "tabGerenciarSalas";
-            this.tabGerenciarSalas.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGerenciarSalas.Size = new System.Drawing.Size(1045, 666);
-            this.tabGerenciarSalas.TabIndex = 3;
-            this.tabGerenciarSalas.Text = "Gerenciar Salas";
-            this.tabGerenciarSalas.UseVisualStyleBackColor = true;
             // 
             // FormularioPrincipal
             // 
