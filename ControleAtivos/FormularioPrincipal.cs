@@ -33,6 +33,7 @@ namespace ControleAtivos
                 btnDesconectar.Enabled = true;
                 cboPortaCOM.Enabled = false;
                 cboBaudRate.Enabled = false;
+                btnProcurar.Enabled = false;
                 lblStatusComunicacao.Text = "A PORTA ESTÁ ABERTA";
                 lblStatusComunicacao.ForeColor = Color.Green;
             } catch {
@@ -41,6 +42,7 @@ namespace ControleAtivos
                 btnDesconectar.Enabled = false;
                 cboPortaCOM.Enabled = true;
                 cboBaudRate.Enabled = true;
+                btnProcurar.Enabled = true;
                 //lblStatusComunicacao.Text = "A PORTA ESTÁ ABERTA";
                 //lblStatusComunicacao.ForeColor = Color.Green;
             }
@@ -51,10 +53,10 @@ namespace ControleAtivos
 
         private void FormularioPrincipal_Load(object sender, EventArgs e)
         {
-            IndentificarPortasCOM();
+            ScanCOMPort();
         }
 
-        private void IndentificarPortasCOM()
+        private void ScanCOMPort()
         {
             cboPortaCOM.Items.Clear();
             foreach(string portas in SerialPort.GetPortNames())
@@ -72,7 +74,7 @@ namespace ControleAtivos
 
         private void BtnProcurar_Click(object sender, EventArgs e)
         {
-            IndentificarPortasCOM();
+            ScanCOMPort();
         }
 
         private void BtnDesconectar_Click(object sender, EventArgs e)
@@ -84,6 +86,7 @@ namespace ControleAtivos
                 btnDesconectar.Enabled = false;
                 cboPortaCOM.Enabled = true;
                 cboBaudRate.Enabled = true;
+                btnProcurar.Enabled = true;
                 lblStatusComunicacao.Text = "A PORTA ESTÁ FECHADA";
                 lblStatusComunicacao.ForeColor = Color.Red;
             }
@@ -91,7 +94,8 @@ namespace ControleAtivos
                 btnConectar.Enabled = false;
                 btnDesconectar.Enabled = true;
                 cboPortaCOM.Enabled = false;
-                cboBaudRate.Enabled = false;
+                cboBaudRate.Enabled = false; 
+                btnProcurar.Enabled = false;
                 lblStatusComunicacao.Text = "A PORTA ESTÁ ABERTA";
                 lblStatusComunicacao.ForeColor = Color.Green;
             }
@@ -131,6 +135,23 @@ namespace ControleAtivos
         private void button7_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void SerialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            this.Invoke(new EventHandler(ReceberDados));
+
+        }
+
+        private void ReceberDados(object sender, EventArgs e)
+        {
+
+            txtRecepcaoDados.Text += serialPort1.ReadExisting();
+        }
+
+        private void BtnClear_Click(object sender, EventArgs e)
+        {
+            txtRecepcaoDados.Text = "";
         }
     }
 }
