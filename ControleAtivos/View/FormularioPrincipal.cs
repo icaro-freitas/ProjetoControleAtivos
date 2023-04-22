@@ -54,6 +54,7 @@ namespace ControleAtivos
         private void FormularioPrincipal_Load(object sender, EventArgs e)
         {
             ScanCOMPort();
+            cboBaudRate.SelectedIndex = 9;
         }
 
         private void ScanCOMPort()
