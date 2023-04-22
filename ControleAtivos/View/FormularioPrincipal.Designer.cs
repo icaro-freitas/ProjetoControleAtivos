@@ -1,5 +1,6 @@
 ﻿
 namespace ControleAtivos
+
 {
     partial class FormularioPrincipal
     {
