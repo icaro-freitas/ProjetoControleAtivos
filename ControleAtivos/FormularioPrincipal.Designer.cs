@@ -33,35 +33,33 @@ namespace ControleAtivos
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabConsulta = new System.Windows.Forms.TabPage();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxConsultaSalas = new System.Windows.Forms.ComboBox();
             this.tabGerenciaAtivos = new System.Windows.Forms.TabPage();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnVizualizarAtivos = new System.Windows.Forms.Button();
+            this.btnExcluirAtivos = new System.Windows.Forms.Button();
+            this.btnAtualizarAtivos = new System.Windows.Forms.Button();
+            this.btnCadastroAtivos = new System.Windows.Forms.Button();
+            this.dataGridViewAtivos = new System.Windows.Forms.DataGridView();
+            this.lblDataSaidaAtivo = new System.Windows.Forms.Label();
+            this.lblDataEntradaAtivos = new System.Windows.Forms.Label();
+            this.dateTimePickerDataSaida = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerDataEntradaAtivo = new System.Windows.Forms.DateTimePicker();
+            this.lblCodigoRfId = new System.Windows.Forms.Label();
+            this.txtCodigoRfId = new System.Windows.Forms.TextBox();
+            this.lblNumeroSerieAtivo = new System.Windows.Forms.Label();
+            this.txtNumeroSerieAtivo = new System.Windows.Forms.TextBox();
+            this.lblGerenciarAtivosSalas = new System.Windows.Forms.Label();
+            this.lblDescricaoAtivo = new System.Windows.Forms.Label();
+            this.comboBoxGerenciarAtivosSalas = new System.Windows.Forms.ComboBox();
+            this.txtDescricaoAtivo = new System.Windows.Forms.TextBox();
             this.tabGerenciarSalas = new System.Windows.Forms.TabPage();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.btnExcluirSala = new System.Windows.Forms.Button();
+            this.btnAtualizarSala = new System.Windows.Forms.Button();
+            this.btnVizualizarSala = new System.Windows.Forms.Button();
+            this.btnCadastrarSala = new System.Windows.Forms.Button();
+            this.dataGridViewSalas = new System.Windows.Forms.DataGridView();
+            this.lblDescricaoSala = new System.Windows.Forms.Label();
+            this.txtDescricaoSala = new System.Windows.Forms.TextBox();
             this.tabComunicacaoSerial = new System.Windows.Forms.TabPage();
             this.btnClear = new System.Windows.Forms.Button();
             this.lblLeituraDados = new System.Windows.Forms.Label();
@@ -80,9 +78,9 @@ namespace ControleAtivos
             this.tabControl1.SuspendLayout();
             this.tabConsulta.SuspendLayout();
             this.tabGerenciaAtivos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAtivos)).BeginInit();
             this.tabGerenciarSalas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalas)).BeginInit();
             this.tabComunicacaoSerial.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,7 +98,7 @@ namespace ControleAtivos
             // 
             // tabConsulta
             // 
-            this.tabConsulta.Controls.Add(this.comboBox1);
+            this.tabConsulta.Controls.Add(this.comboBoxConsultaSalas);
             this.tabConsulta.Location = new System.Drawing.Point(4, 22);
             this.tabConsulta.Name = "tabConsulta";
             this.tabConsulta.Padding = new System.Windows.Forms.Padding(3);
@@ -109,36 +107,34 @@ namespace ControleAtivos
             this.tabConsulta.Text = "Consulta Ativos";
             this.tabConsulta.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // comboBoxConsultaSalas
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 6);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 0;
+            this.comboBoxConsultaSalas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxConsultaSalas.FormattingEnabled = true;
+            this.comboBoxConsultaSalas.Location = new System.Drawing.Point(6, 6);
+            this.comboBoxConsultaSalas.Name = "comboBoxConsultaSalas";
+            this.comboBoxConsultaSalas.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxConsultaSalas.TabIndex = 0;
             // 
             // tabGerenciaAtivos
             // 
-            this.tabGerenciaAtivos.Controls.Add(this.button4);
-            this.tabGerenciaAtivos.Controls.Add(this.button3);
-            this.tabGerenciaAtivos.Controls.Add(this.button2);
-            this.tabGerenciaAtivos.Controls.Add(this.button1);
-            this.tabGerenciaAtivos.Controls.Add(this.dataGridView1);
-            this.tabGerenciaAtivos.Controls.Add(this.label7);
-            this.tabGerenciaAtivos.Controls.Add(this.label6);
-            this.tabGerenciaAtivos.Controls.Add(this.dateTimePicker2);
-            this.tabGerenciaAtivos.Controls.Add(this.dateTimePicker1);
-            this.tabGerenciaAtivos.Controls.Add(this.label5);
-            this.tabGerenciaAtivos.Controls.Add(this.textBox4);
-            this.tabGerenciaAtivos.Controls.Add(this.label4);
-            this.tabGerenciaAtivos.Controls.Add(this.textBox3);
-            this.tabGerenciaAtivos.Controls.Add(this.label3);
-            this.tabGerenciaAtivos.Controls.Add(this.textBox2);
-            this.tabGerenciaAtivos.Controls.Add(this.label2);
-            this.tabGerenciaAtivos.Controls.Add(this.label1);
-            this.tabGerenciaAtivos.Controls.Add(this.comboBox2);
-            this.tabGerenciaAtivos.Controls.Add(this.textBox1);
+            this.tabGerenciaAtivos.Controls.Add(this.btnVizualizarAtivos);
+            this.tabGerenciaAtivos.Controls.Add(this.btnExcluirAtivos);
+            this.tabGerenciaAtivos.Controls.Add(this.btnAtualizarAtivos);
+            this.tabGerenciaAtivos.Controls.Add(this.btnCadastroAtivos);
+            this.tabGerenciaAtivos.Controls.Add(this.dataGridViewAtivos);
+            this.tabGerenciaAtivos.Controls.Add(this.lblDataSaidaAtivo);
+            this.tabGerenciaAtivos.Controls.Add(this.lblDataEntradaAtivos);
+            this.tabGerenciaAtivos.Controls.Add(this.dateTimePickerDataSaida);
+            this.tabGerenciaAtivos.Controls.Add(this.dateTimePickerDataEntradaAtivo);
+            this.tabGerenciaAtivos.Controls.Add(this.lblCodigoRfId);
+            this.tabGerenciaAtivos.Controls.Add(this.txtCodigoRfId);
+            this.tabGerenciaAtivos.Controls.Add(this.lblNumeroSerieAtivo);
+            this.tabGerenciaAtivos.Controls.Add(this.txtNumeroSerieAtivo);
+            this.tabGerenciaAtivos.Controls.Add(this.lblGerenciarAtivosSalas);
+            this.tabGerenciaAtivos.Controls.Add(this.lblDescricaoAtivo);
+            this.tabGerenciaAtivos.Controls.Add(this.comboBoxGerenciarAtivosSalas);
+            this.tabGerenciaAtivos.Controls.Add(this.txtDescricaoAtivo);
             this.tabGerenciaAtivos.Location = new System.Drawing.Point(4, 22);
             this.tabGerenciaAtivos.Name = "tabGerenciaAtivos";
             this.tabGerenciaAtivos.Padding = new System.Windows.Forms.Padding(3);
@@ -147,198 +143,178 @@ namespace ControleAtivos
             this.tabGerenciaAtivos.Text = "Gerenciar Ativos";
             this.tabGerenciaAtivos.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnVizualizarAtivos
             // 
-            this.button4.Location = new System.Drawing.Point(191, 141);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(93, 19);
-            this.button4.TabIndex = 18;
-            this.button4.Text = "Visualizar";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnVizualizarAtivos.Location = new System.Drawing.Point(191, 141);
+            this.btnVizualizarAtivos.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVizualizarAtivos.Name = "btnVizualizarAtivos";
+            this.btnVizualizarAtivos.Size = new System.Drawing.Size(93, 19);
+            this.btnVizualizarAtivos.TabIndex = 18;
+            this.btnVizualizarAtivos.Text = "Visualizar";
+            this.btnVizualizarAtivos.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnExcluirAtivos
             // 
-            this.button3.Location = new System.Drawing.Point(710, 141);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(106, 19);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "Excluir";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnExcluirAtivos.Location = new System.Drawing.Point(710, 141);
+            this.btnExcluirAtivos.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExcluirAtivos.Name = "btnExcluirAtivos";
+            this.btnExcluirAtivos.Size = new System.Drawing.Size(106, 19);
+            this.btnExcluirAtivos.TabIndex = 17;
+            this.btnExcluirAtivos.Text = "Excluir";
+            this.btnExcluirAtivos.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnAtualizarAtivos
             // 
-            this.button2.Location = new System.Drawing.Point(548, 141);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(93, 19);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Atualizar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAtualizarAtivos.Location = new System.Drawing.Point(548, 141);
+            this.btnAtualizarAtivos.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAtualizarAtivos.Name = "btnAtualizarAtivos";
+            this.btnAtualizarAtivos.Size = new System.Drawing.Size(93, 19);
+            this.btnAtualizarAtivos.TabIndex = 16;
+            this.btnAtualizarAtivos.Text = "Atualizar";
+            this.btnAtualizarAtivos.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnCadastroAtivos
             // 
-            this.button1.Location = new System.Drawing.Point(39, 141);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 19);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Cadastrar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCadastroAtivos.Location = new System.Drawing.Point(39, 141);
+            this.btnCadastroAtivos.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCadastroAtivos.Name = "btnCadastroAtivos";
+            this.btnCadastroAtivos.Size = new System.Drawing.Size(89, 19);
+            this.btnCadastroAtivos.TabIndex = 15;
+            this.btnCadastroAtivos.Text = "Cadastrar";
+            this.btnCadastroAtivos.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dataGridViewAtivos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 171);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1009, 436);
-            this.dataGridView1.TabIndex = 14;
+            this.dataGridViewAtivos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAtivos.Location = new System.Drawing.Point(16, 171);
+            this.dataGridViewAtivos.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewAtivos.Name = "dataGridViewAtivos";
+            this.dataGridViewAtivos.RowHeadersWidth = 51;
+            this.dataGridViewAtivos.RowTemplate.Height = 24;
+            this.dataGridViewAtivos.Size = new System.Drawing.Size(1009, 436);
+            this.dataGridViewAtivos.TabIndex = 14;
             // 
-            // label7
+            // lblDataSaidaAtivo
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(557, 61);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 13);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Saída:";
+            this.lblDataSaidaAtivo.AutoSize = true;
+            this.lblDataSaidaAtivo.Location = new System.Drawing.Point(557, 61);
+            this.lblDataSaidaAtivo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDataSaidaAtivo.Name = "lblDataSaidaAtivo";
+            this.lblDataSaidaAtivo.Size = new System.Drawing.Size(39, 13);
+            this.lblDataSaidaAtivo.TabIndex = 13;
+            this.lblDataSaidaAtivo.Text = "Saída:";
             // 
-            // label6
+            // lblDataEntradaAtivos
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(546, 20);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 13);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Entrada:";
+            this.lblDataEntradaAtivos.AutoSize = true;
+            this.lblDataEntradaAtivos.Location = new System.Drawing.Point(546, 20);
+            this.lblDataEntradaAtivos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDataEntradaAtivos.Name = "lblDataEntradaAtivos";
+            this.lblDataEntradaAtivos.Size = new System.Drawing.Size(47, 13);
+            this.lblDataEntradaAtivos.TabIndex = 12;
+            this.lblDataEntradaAtivos.Text = "Entrada:";
             // 
-            // dateTimePicker2
+            // dateTimePickerDataSaida
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(600, 57);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(151, 20);
-            this.dateTimePicker2.TabIndex = 11;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            this.dateTimePickerDataSaida.Location = new System.Drawing.Point(600, 57);
+            this.dateTimePickerDataSaida.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePickerDataSaida.Name = "dateTimePickerDataSaida";
+            this.dateTimePickerDataSaida.Size = new System.Drawing.Size(151, 20);
+            this.dateTimePickerDataSaida.TabIndex = 11;
+            this.dateTimePickerDataSaida.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
-            // dateTimePicker1
+            // dateTimePickerDataEntradaAtivo
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(600, 16);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(151, 20);
-            this.dateTimePicker1.TabIndex = 10;
+            this.dateTimePickerDataEntradaAtivo.Location = new System.Drawing.Point(600, 16);
+            this.dateTimePickerDataEntradaAtivo.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePickerDataEntradaAtivo.Name = "dateTimePickerDataEntradaAtivo";
+            this.dateTimePickerDataEntradaAtivo.Size = new System.Drawing.Size(151, 20);
+            this.dateTimePickerDataEntradaAtivo.TabIndex = 10;
             // 
-            // label5
+            // lblCodigoRfId
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(375, 59);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Código rfId:";
+            this.lblCodigoRfId.AutoSize = true;
+            this.lblCodigoRfId.Location = new System.Drawing.Point(375, 59);
+            this.lblCodigoRfId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCodigoRfId.Name = "lblCodigoRfId";
+            this.lblCodigoRfId.Size = new System.Drawing.Size(61, 13);
+            this.lblCodigoRfId.TabIndex = 9;
+            this.lblCodigoRfId.Text = "Código rfId:";
             // 
-            // textBox4
+            // txtCodigoRfId
             // 
-            this.textBox4.Location = new System.Drawing.Point(436, 57);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(107, 20);
-            this.textBox4.TabIndex = 8;
+            this.txtCodigoRfId.Location = new System.Drawing.Point(436, 57);
+            this.txtCodigoRfId.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCodigoRfId.Name = "txtCodigoRfId";
+            this.txtCodigoRfId.Size = new System.Drawing.Size(107, 20);
+            this.txtCodigoRfId.TabIndex = 8;
             // 
-            // label4
+            // lblNumeroSerieAtivo
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(264, 61);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Id rfId:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.lblNumeroSerieAtivo.AutoSize = true;
+            this.lblNumeroSerieAtivo.Location = new System.Drawing.Point(264, 20);
+            this.lblNumeroSerieAtivo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNumeroSerieAtivo.Name = "lblNumeroSerieAtivo";
+            this.lblNumeroSerieAtivo.Size = new System.Drawing.Size(87, 13);
+            this.lblNumeroSerieAtivo.TabIndex = 5;
+            this.lblNumeroSerieAtivo.Text = "Número de série:";
+            this.lblNumeroSerieAtivo.Click += new System.EventHandler(this.label3_Click);
             // 
-            // textBox3
+            // txtNumeroSerieAtivo
             // 
-            this.textBox3.Location = new System.Drawing.Point(307, 58);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(44, 20);
-            this.textBox3.TabIndex = 6;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.txtNumeroSerieAtivo.Location = new System.Drawing.Point(351, 18);
+            this.txtNumeroSerieAtivo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNumeroSerieAtivo.Name = "txtNumeroSerieAtivo";
+            this.txtNumeroSerieAtivo.Size = new System.Drawing.Size(159, 20);
+            this.txtNumeroSerieAtivo.TabIndex = 4;
+            this.txtNumeroSerieAtivo.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // label3
+            // lblGerenciarAtivosSalas
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(264, 20);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Número de série:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.lblGerenciarAtivosSalas.AutoSize = true;
+            this.lblGerenciarAtivosSalas.Location = new System.Drawing.Point(22, 63);
+            this.lblGerenciarAtivosSalas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblGerenciarAtivosSalas.Name = "lblGerenciarAtivosSalas";
+            this.lblGerenciarAtivosSalas.Size = new System.Drawing.Size(31, 13);
+            this.lblGerenciarAtivosSalas.TabIndex = 3;
+            this.lblGerenciarAtivosSalas.Text = "Sala:";
             // 
-            // textBox2
+            // lblDescricaoAtivo
             // 
-            this.textBox2.Location = new System.Drawing.Point(351, 18);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(159, 20);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.lblDescricaoAtivo.AutoSize = true;
+            this.lblDescricaoAtivo.Location = new System.Drawing.Point(22, 23);
+            this.lblDescricaoAtivo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDescricaoAtivo.Name = "lblDescricaoAtivo";
+            this.lblDescricaoAtivo.Size = new System.Drawing.Size(58, 13);
+            this.lblDescricaoAtivo.TabIndex = 2;
+            this.lblDescricaoAtivo.Text = "Descrição:";
             // 
-            // label2
+            // comboBoxGerenciarAtivosSalas
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 63);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Sala:";
+            this.comboBoxGerenciarAtivosSalas.FormattingEnabled = true;
+            this.comboBoxGerenciarAtivosSalas.Location = new System.Drawing.Point(56, 57);
+            this.comboBoxGerenciarAtivosSalas.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxGerenciarAtivosSalas.Name = "comboBoxGerenciarAtivosSalas";
+            this.comboBoxGerenciarAtivosSalas.Size = new System.Drawing.Size(185, 21);
+            this.comboBoxGerenciarAtivosSalas.TabIndex = 1;
             // 
-            // label1
+            // txtDescricaoAtivo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 23);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Descrição:";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(56, 57);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(185, 21);
-            this.comboBox2.TabIndex = 1;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(81, 20);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(159, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtDescricaoAtivo.Location = new System.Drawing.Point(81, 20);
+            this.txtDescricaoAtivo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDescricaoAtivo.Name = "txtDescricaoAtivo";
+            this.txtDescricaoAtivo.Size = new System.Drawing.Size(159, 20);
+            this.txtDescricaoAtivo.TabIndex = 0;
             // 
             // tabGerenciarSalas
             // 
-            this.tabGerenciarSalas.Controls.Add(this.button7);
-            this.tabGerenciarSalas.Controls.Add(this.button8);
-            this.tabGerenciarSalas.Controls.Add(this.button5);
-            this.tabGerenciarSalas.Controls.Add(this.button6);
-            this.tabGerenciarSalas.Controls.Add(this.dataGridView2);
-            this.tabGerenciarSalas.Controls.Add(this.label9);
-            this.tabGerenciarSalas.Controls.Add(this.textBox5);
+            this.tabGerenciarSalas.Controls.Add(this.btnExcluirSala);
+            this.tabGerenciarSalas.Controls.Add(this.btnAtualizarSala);
+            this.tabGerenciarSalas.Controls.Add(this.btnVizualizarSala);
+            this.tabGerenciarSalas.Controls.Add(this.btnCadastrarSala);
+            this.tabGerenciarSalas.Controls.Add(this.dataGridViewSalas);
+            this.tabGerenciarSalas.Controls.Add(this.lblDescricaoSala);
+            this.tabGerenciarSalas.Controls.Add(this.txtDescricaoSala);
             this.tabGerenciarSalas.Location = new System.Drawing.Point(4, 22);
             this.tabGerenciarSalas.Name = "tabGerenciarSalas";
             this.tabGerenciarSalas.Padding = new System.Windows.Forms.Padding(3);
@@ -347,76 +323,76 @@ namespace ControleAtivos
             this.tabGerenciarSalas.Text = "Gerenciar Salas";
             this.tabGerenciarSalas.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btnExcluirSala
             // 
-            this.button7.Location = new System.Drawing.Point(646, 93);
-            this.button7.Margin = new System.Windows.Forms.Padding(2);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(93, 19);
-            this.button7.TabIndex = 27;
-            this.button7.Text = "Excluir";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.btnExcluirSala.Location = new System.Drawing.Point(646, 93);
+            this.btnExcluirSala.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExcluirSala.Name = "btnExcluirSala";
+            this.btnExcluirSala.Size = new System.Drawing.Size(93, 19);
+            this.btnExcluirSala.TabIndex = 27;
+            this.btnExcluirSala.Text = "Excluir";
+            this.btnExcluirSala.UseVisualStyleBackColor = true;
+            this.btnExcluirSala.Click += new System.EventHandler(this.button7_Click);
             // 
-            // button8
+            // btnAtualizarSala
             // 
-            this.button8.Location = new System.Drawing.Point(494, 93);
-            this.button8.Margin = new System.Windows.Forms.Padding(2);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(89, 19);
-            this.button8.TabIndex = 26;
-            this.button8.Text = "Editar";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.btnAtualizarSala.Location = new System.Drawing.Point(494, 93);
+            this.btnAtualizarSala.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAtualizarSala.Name = "btnAtualizarSala";
+            this.btnAtualizarSala.Size = new System.Drawing.Size(89, 19);
+            this.btnAtualizarSala.TabIndex = 26;
+            this.btnAtualizarSala.Text = "Atualizar";
+            this.btnAtualizarSala.UseVisualStyleBackColor = true;
+            this.btnAtualizarSala.Click += new System.EventHandler(this.button8_Click);
             // 
-            // button5
+            // btnVizualizarSala
             // 
-            this.button5.Location = new System.Drawing.Point(184, 93);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(93, 19);
-            this.button5.TabIndex = 25;
-            this.button5.Text = "Visualizar";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnVizualizarSala.Location = new System.Drawing.Point(184, 93);
+            this.btnVizualizarSala.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVizualizarSala.Name = "btnVizualizarSala";
+            this.btnVizualizarSala.Size = new System.Drawing.Size(93, 19);
+            this.btnVizualizarSala.TabIndex = 25;
+            this.btnVizualizarSala.Text = "Visualizar";
+            this.btnVizualizarSala.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnCadastrarSala
             // 
-            this.button6.Location = new System.Drawing.Point(32, 93);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(89, 19);
-            this.button6.TabIndex = 24;
-            this.button6.Text = "Cadastrar";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnCadastrarSala.Location = new System.Drawing.Point(32, 93);
+            this.btnCadastrarSala.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCadastrarSala.Name = "btnCadastrarSala";
+            this.btnCadastrarSala.Size = new System.Drawing.Size(89, 19);
+            this.btnCadastrarSala.TabIndex = 24;
+            this.btnCadastrarSala.Text = "Cadastrar";
+            this.btnCadastrarSala.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // dataGridViewSalas
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(8, 122);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(1009, 471);
-            this.dataGridView2.TabIndex = 23;
+            this.dataGridViewSalas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSalas.Location = new System.Drawing.Point(8, 122);
+            this.dataGridViewSalas.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewSalas.Name = "dataGridViewSalas";
+            this.dataGridViewSalas.RowHeadersWidth = 51;
+            this.dataGridViewSalas.RowTemplate.Height = 24;
+            this.dataGridViewSalas.Size = new System.Drawing.Size(1009, 471);
+            this.dataGridViewSalas.TabIndex = 23;
             // 
-            // label9
+            // lblDescricaoSala
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(26, 44);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(58, 13);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "Descrição:";
+            this.lblDescricaoSala.AutoSize = true;
+            this.lblDescricaoSala.Location = new System.Drawing.Point(26, 44);
+            this.lblDescricaoSala.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDescricaoSala.Name = "lblDescricaoSala";
+            this.lblDescricaoSala.Size = new System.Drawing.Size(58, 13);
+            this.lblDescricaoSala.TabIndex = 21;
+            this.lblDescricaoSala.Text = "Descrição:";
             // 
-            // textBox5
+            // txtDescricaoSala
             // 
-            this.textBox5.Location = new System.Drawing.Point(85, 41);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(655, 20);
-            this.textBox5.TabIndex = 19;
+            this.txtDescricaoSala.Location = new System.Drawing.Point(85, 41);
+            this.txtDescricaoSala.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDescricaoSala.Name = "txtDescricaoSala";
+            this.txtDescricaoSala.Size = new System.Drawing.Size(655, 20);
+            this.txtDescricaoSala.TabIndex = 19;
             // 
             // tabComunicacaoSerial
             // 
@@ -592,10 +568,10 @@ namespace ControleAtivos
             this.tabConsulta.ResumeLayout(false);
             this.tabGerenciaAtivos.ResumeLayout(false);
             this.tabGerenciaAtivos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAtivos)).EndInit();
             this.tabGerenciarSalas.ResumeLayout(false);
             this.tabGerenciarSalas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalas)).EndInit();
             this.tabComunicacaoSerial.ResumeLayout(false);
             this.tabComunicacaoSerial.PerformLayout();
             this.ResumeLayout(false);
@@ -608,7 +584,7 @@ namespace ControleAtivos
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabConsulta;
         private System.Windows.Forms.TabPage tabComunicacaoSerial;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxConsultaSalas;
         private System.Windows.Forms.Label lblConfiguracoes;
         private System.Windows.Forms.Label lblPortaCom;
         private System.Windows.Forms.Label lblBaudRate;
@@ -621,32 +597,30 @@ namespace ControleAtivos
         private System.Windows.Forms.Button btnProcurar;
         private System.Windows.Forms.TabPage tabGerenciaAtivos;
         private System.Windows.Forms.TabPage tabGerenciarSalas;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label lblNumeroSerieAtivo;
+        private System.Windows.Forms.TextBox txtNumeroSerieAtivo;
+        private System.Windows.Forms.Label lblGerenciarAtivosSalas;
+        private System.Windows.Forms.Label lblDescricaoAtivo;
+        private System.Windows.Forms.ComboBox comboBoxGerenciarAtivosSalas;
+        private System.Windows.Forms.TextBox txtDescricaoAtivo;
+        private System.Windows.Forms.Label lblDataSaidaAtivo;
+        private System.Windows.Forms.Label lblDataEntradaAtivos;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDataSaida;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDataEntradaAtivo;
+        private System.Windows.Forms.Label lblCodigoRfId;
+        private System.Windows.Forms.TextBox txtCodigoRfId;
+        private System.Windows.Forms.Button btnVizualizarAtivos;
+        private System.Windows.Forms.Button btnExcluirAtivos;
+        private System.Windows.Forms.Button btnAtualizarAtivos;
+        private System.Windows.Forms.Button btnCadastroAtivos;
+        private System.Windows.Forms.DataGridView dataGridViewAtivos;
+        private System.Windows.Forms.Button btnExcluirSala;
+        private System.Windows.Forms.Button btnAtualizarSala;
+        private System.Windows.Forms.Button btnVizualizarSala;
+        private System.Windows.Forms.Button btnCadastrarSala;
+        private System.Windows.Forms.DataGridView dataGridViewSalas;
+        private System.Windows.Forms.Label lblDescricaoSala;
+        private System.Windows.Forms.TextBox txtDescricaoSala;
         private System.Windows.Forms.Label lblLeituraDados;
         private System.Windows.Forms.TextBox txtRecepcaoDados;
         private System.Windows.Forms.Button btnClear;
