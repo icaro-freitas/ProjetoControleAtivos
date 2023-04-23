@@ -365,6 +365,7 @@ namespace ControleAtivos
             this.btnCadastrarSala.TabIndex = 24;
             this.btnCadastrarSala.Text = "Cadastrar";
             this.btnCadastrarSala.UseVisualStyleBackColor = true;
+            this.btnCadastrarSala.Click += new System.EventHandler(this.BtnCadastrarSala_Click);
             // 
             // dataGridViewSalas
             // 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
+using ControleAtivos.Model;
 
 namespace ControleAtivos
 {
@@ -153,6 +154,12 @@ namespace ControleAtivos
         private void BtnClear_Click(object sender, EventArgs e)
         {
             txtRecepcaoDados.Text = "";
+        }
+
+        private void BtnCadastrarSala_Click(object sender, EventArgs e)
+        {
+                 
+
         }
     }
 }
