@@ -41,10 +41,8 @@ namespace ControleAtivos
             this.btnAtualizarAtivos = new System.Windows.Forms.Button();
             this.btnCadastroAtivos = new System.Windows.Forms.Button();
             this.dataGridViewAtivos = new System.Windows.Forms.DataGridView();
-            this.lblDataSaidaAtivo = new System.Windows.Forms.Label();
-            this.lblDataEntradaAtivos = new System.Windows.Forms.Label();
-            this.dateTimePickerDataSaida = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerDataEntradaAtivo = new System.Windows.Forms.DateTimePicker();
+            this.lblDataModificacao = new System.Windows.Forms.Label();
+            this.dateTimePickerDataModificacao = new System.Windows.Forms.DateTimePicker();
             this.lblCodigoRfId = new System.Windows.Forms.Label();
             this.txtCodigoRfId = new System.Windows.Forms.TextBox();
             this.lblNumeroSerieAtivo = new System.Windows.Forms.Label();
@@ -124,10 +122,8 @@ namespace ControleAtivos
             this.tabGerenciaAtivos.Controls.Add(this.btnAtualizarAtivos);
             this.tabGerenciaAtivos.Controls.Add(this.btnCadastroAtivos);
             this.tabGerenciaAtivos.Controls.Add(this.dataGridViewAtivos);
-            this.tabGerenciaAtivos.Controls.Add(this.lblDataSaidaAtivo);
-            this.tabGerenciaAtivos.Controls.Add(this.lblDataEntradaAtivos);
-            this.tabGerenciaAtivos.Controls.Add(this.dateTimePickerDataSaida);
-            this.tabGerenciaAtivos.Controls.Add(this.dateTimePickerDataEntradaAtivo);
+            this.tabGerenciaAtivos.Controls.Add(this.lblDataModificacao);
+            this.tabGerenciaAtivos.Controls.Add(this.dateTimePickerDataModificacao);
             this.tabGerenciaAtivos.Controls.Add(this.lblCodigoRfId);
             this.tabGerenciaAtivos.Controls.Add(this.txtCodigoRfId);
             this.tabGerenciaAtivos.Controls.Add(this.lblNumeroSerieAtivo);
@@ -195,47 +191,30 @@ namespace ControleAtivos
             this.dataGridViewAtivos.Size = new System.Drawing.Size(1009, 436);
             this.dataGridViewAtivos.TabIndex = 14;
             // 
-            // lblDataSaidaAtivo
+            // lblDataModificacao
             // 
-            this.lblDataSaidaAtivo.AutoSize = true;
-            this.lblDataSaidaAtivo.Location = new System.Drawing.Point(557, 61);
-            this.lblDataSaidaAtivo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDataSaidaAtivo.Name = "lblDataSaidaAtivo";
-            this.lblDataSaidaAtivo.Size = new System.Drawing.Size(39, 13);
-            this.lblDataSaidaAtivo.TabIndex = 13;
-            this.lblDataSaidaAtivo.Text = "Saída:";
+            this.lblDataModificacao.AutoSize = true;
+            this.lblDataModificacao.Location = new System.Drawing.Point(563, 59);
+            this.lblDataModificacao.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDataModificacao.Name = "lblDataModificacao";
+            this.lblDataModificacao.Size = new System.Drawing.Size(121, 13);
+            this.lblDataModificacao.TabIndex = 13;
+            this.lblDataModificacao.Text = "Data de Movimentação:";
+            this.lblDataModificacao.Click += new System.EventHandler(this.lblDataSaidaAtivo_Click);
             // 
-            // lblDataEntradaAtivos
+            // dateTimePickerDataModificacao
             // 
-            this.lblDataEntradaAtivos.AutoSize = true;
-            this.lblDataEntradaAtivos.Location = new System.Drawing.Point(546, 20);
-            this.lblDataEntradaAtivos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDataEntradaAtivos.Name = "lblDataEntradaAtivos";
-            this.lblDataEntradaAtivos.Size = new System.Drawing.Size(47, 13);
-            this.lblDataEntradaAtivos.TabIndex = 12;
-            this.lblDataEntradaAtivos.Text = "Entrada:";
-            // 
-            // dateTimePickerDataSaida
-            // 
-            this.dateTimePickerDataSaida.Location = new System.Drawing.Point(600, 57);
-            this.dateTimePickerDataSaida.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePickerDataSaida.Name = "dateTimePickerDataSaida";
-            this.dateTimePickerDataSaida.Size = new System.Drawing.Size(151, 20);
-            this.dateTimePickerDataSaida.TabIndex = 11;
-            this.dateTimePickerDataSaida.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
-            // 
-            // dateTimePickerDataEntradaAtivo
-            // 
-            this.dateTimePickerDataEntradaAtivo.Location = new System.Drawing.Point(600, 16);
-            this.dateTimePickerDataEntradaAtivo.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePickerDataEntradaAtivo.Name = "dateTimePickerDataEntradaAtivo";
-            this.dateTimePickerDataEntradaAtivo.Size = new System.Drawing.Size(151, 20);
-            this.dateTimePickerDataEntradaAtivo.TabIndex = 10;
+            this.dateTimePickerDataModificacao.Location = new System.Drawing.Point(688, 54);
+            this.dateTimePickerDataModificacao.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePickerDataModificacao.Name = "dateTimePickerDataModificacao";
+            this.dateTimePickerDataModificacao.Size = new System.Drawing.Size(151, 20);
+            this.dateTimePickerDataModificacao.TabIndex = 11;
+            this.dateTimePickerDataModificacao.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // lblCodigoRfId
             // 
             this.lblCodigoRfId.AutoSize = true;
-            this.lblCodigoRfId.Location = new System.Drawing.Point(375, 59);
+            this.lblCodigoRfId.Location = new System.Drawing.Point(348, 59);
             this.lblCodigoRfId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCodigoRfId.Name = "lblCodigoRfId";
             this.lblCodigoRfId.Size = new System.Drawing.Size(61, 13);
@@ -244,7 +223,7 @@ namespace ControleAtivos
             // 
             // txtCodigoRfId
             // 
-            this.txtCodigoRfId.Location = new System.Drawing.Point(436, 57);
+            this.txtCodigoRfId.Location = new System.Drawing.Point(409, 57);
             this.txtCodigoRfId.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodigoRfId.Name = "txtCodigoRfId";
             this.txtCodigoRfId.Size = new System.Drawing.Size(107, 20);
@@ -605,10 +584,8 @@ namespace ControleAtivos
         private System.Windows.Forms.Label lblDescricaoAtivo;
         private System.Windows.Forms.ComboBox comboBoxGerenciarAtivosSalas;
         private System.Windows.Forms.TextBox txtDescricaoAtivo;
-        private System.Windows.Forms.Label lblDataSaidaAtivo;
-        private System.Windows.Forms.Label lblDataEntradaAtivos;
-        private System.Windows.Forms.DateTimePicker dateTimePickerDataSaida;
-        private System.Windows.Forms.DateTimePicker dateTimePickerDataEntradaAtivo;
+        private System.Windows.Forms.Label lblDataModificacao;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDataModificacao;
         private System.Windows.Forms.Label lblCodigoRfId;
         private System.Windows.Forms.TextBox txtCodigoRfId;
         private System.Windows.Forms.Button btnVizualizarAtivos;

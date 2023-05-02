@@ -53,15 +53,15 @@
     <Compile Include="Model\Ativo.cs" />
     <Compile Include="Model\Banco.cs" />
     <Compile Include="Model\Sala.cs" />
-    <Compile Include="View\FormularioPrincipal.cs">
+    <Compile Include="View_Controller\FormularioPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FormularioPrincipal.Designer.cs">
+    <Compile Include="View_Controller\FormularioPrincipal.Designer.cs">
       <DependentUpon>FormularioPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Program.cs" />
+    <Compile Include="View_Controller\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="View\FormularioPrincipal.resx">
+    <EmbeddedResource Include="View_Controller\FormularioPrincipal.resx">
       <DependentUpon>FormularioPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

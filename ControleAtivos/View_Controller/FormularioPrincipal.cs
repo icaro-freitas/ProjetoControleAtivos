@@ -161,5 +161,10 @@ namespace ControleAtivos
                  
 
         }
+
+        private void lblDataSaidaAtivo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
