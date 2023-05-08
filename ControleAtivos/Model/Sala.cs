@@ -93,8 +93,8 @@ namespace ControleAtivos.Model
 
             banco.Connection.Open();
             reader = command.ExecuteReader();
-            this.Id_sala = reader.GetInt32("id_sala");
-            this.Descricao = reader.GetString("descricao");           
+            Id_sala = reader.GetInt32("id_sala");
+            Descricao = reader.GetString("descricao");           
 
             banco.Connection.Close();
             return this;

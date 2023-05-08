@@ -21,7 +21,6 @@ namespace ControleAtivos.Model
         {
             get { return connection; }           
         }
-
         
     }
 }

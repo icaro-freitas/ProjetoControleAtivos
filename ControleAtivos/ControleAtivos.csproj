@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Ativo.cs" />
+    <Compile Include="Model\AtivoSala.cs" />
     <Compile Include="Model\Banco.cs" />
     <Compile Include="Model\Sala.cs" />
     <Compile Include="View_Controller\FormularioPrincipal.cs">

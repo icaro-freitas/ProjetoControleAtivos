@@ -15,8 +15,7 @@ namespace ControleAtivos.Model
         private int id_sala;
         private int num_serie;
         private String rfid;
-        private DateTime data_ent;
-        private DateTime data_saida;
+        private DateTime data_cadastro;        
         private Banco banco;
 
         public Ativo()
@@ -24,15 +23,14 @@ namespace ControleAtivos.Model
             banco = new Banco();
         }
 
-        public Ativo(int id_ativo, string descricao, int id_sala, int num_serie, string rfid, DateTime data_ent, DateTime data_saida)
+        public Ativo(int id_ativo, string descricao, int id_sala, int num_serie, string rfid, DateTime data_cadastro)
         {
             this.id_ativo = id_ativo;
             this.descricao = descricao;
             this.id_sala = id_sala;
             this.num_serie = num_serie;
             this.rfid = rfid;
-            this.data_ent = data_ent;
-            this.data_saida = data_saida;
+            this.data_cadastro = data_cadastro;
             banco = new Banco();
         }
 
@@ -66,29 +64,22 @@ namespace ControleAtivos.Model
             set { rfid = value; }
         }
 
-        public DateTime Data_ent
+        public DateTime Data_cadastro
         {
-            get { return data_ent; }
-            set { data_ent = value; }
+            get { return data_cadastro; }
+            set { data_cadastro = value; }
         }
-
-        public DateTime Data_saida
-        {
-            get { return data_saida; }
-            set { data_saida = value; }
-        }
-
+       
         public void Save()
         {
             MySqlCommand command = this.banco.Connection.CreateCommand();            
 
-            command.CommandText = "INSERT INTO ativos(descricao,id_sala,num_serie,rfid,data_ent,data_saida) VALUES(@1,@2,@3,@4,@5,@6)";
+            command.CommandText = "INSERT INTO ativos(descricao,id_sala,num_serie,rfid,data_cadastro) VALUES(@1,@2,@3,@4,@5)";
             command.Parameters.Add("@1",MySqlDbType.VarChar,50).Value = Descricao;
             command.Parameters.Add("@2",MySqlDbType.Int32).Value =  Id_sala;
             command.Parameters.Add("@3", MySqlDbType.Int32).Value = Num_serie;
-            command.Parameters.Add("@4", MySqlDbType.VarChar, 10).Value = Rfid;
-            command.Parameters.Add("@5", MySqlDbType.Date).Value = Data_ent;
-            command.Parameters.Add("@6", MySqlDbType.Date).Value = Data_saida;
+            command.Parameters.Add("@4", MySqlDbType.VarChar, 20).Value = Rfid;
+            command.Parameters.Add("@5", MySqlDbType.DateTime).Value = Data_cadastro;           
             //Checar insercao de datas no banco de dados.
             //int quantidadeTuplasAfetadas =  command.ExecuteNonQuery();
             banco.Connection.Open();
