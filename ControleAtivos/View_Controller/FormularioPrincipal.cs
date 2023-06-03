@@ -181,8 +181,6 @@ namespace ControleAtivos
             {
                 MessageBox.Show("Nome da sala vazio!", "Cadastro da sala", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-
         }
 
         private void lblDataSaidaAtivo_Click(object sender, EventArgs e)

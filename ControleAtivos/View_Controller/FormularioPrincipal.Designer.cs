@@ -41,15 +41,11 @@ namespace ControleAtivos
             this.btnAtualizarAtivos = new System.Windows.Forms.Button();
             this.btnCadastroAtivos = new System.Windows.Forms.Button();
             this.dataGridViewAtivos = new System.Windows.Forms.DataGridView();
-            this.lblDataModificacao = new System.Windows.Forms.Label();
-            this.dateTimePickerDataModificacao = new System.Windows.Forms.DateTimePicker();
             this.lblCodigoRfId = new System.Windows.Forms.Label();
             this.txtCodigoRfId = new System.Windows.Forms.TextBox();
             this.lblNumeroSerieAtivo = new System.Windows.Forms.Label();
             this.txtNumeroSerieAtivo = new System.Windows.Forms.TextBox();
-            this.lblGerenciarAtivosSalas = new System.Windows.Forms.Label();
             this.lblDescricaoAtivo = new System.Windows.Forms.Label();
-            this.comboBoxGerenciarAtivosSalas = new System.Windows.Forms.ComboBox();
             this.txtDescricaoAtivo = new System.Windows.Forms.TextBox();
             this.tabGerenciarSalas = new System.Windows.Forms.TabPage();
             this.btnExcluirSala = new System.Windows.Forms.Button();
@@ -124,15 +120,11 @@ namespace ControleAtivos
             this.tabGerenciaAtivos.Controls.Add(this.btnAtualizarAtivos);
             this.tabGerenciaAtivos.Controls.Add(this.btnCadastroAtivos);
             this.tabGerenciaAtivos.Controls.Add(this.dataGridViewAtivos);
-            this.tabGerenciaAtivos.Controls.Add(this.lblDataModificacao);
-            this.tabGerenciaAtivos.Controls.Add(this.dateTimePickerDataModificacao);
             this.tabGerenciaAtivos.Controls.Add(this.lblCodigoRfId);
             this.tabGerenciaAtivos.Controls.Add(this.txtCodigoRfId);
             this.tabGerenciaAtivos.Controls.Add(this.lblNumeroSerieAtivo);
             this.tabGerenciaAtivos.Controls.Add(this.txtNumeroSerieAtivo);
-            this.tabGerenciaAtivos.Controls.Add(this.lblGerenciarAtivosSalas);
             this.tabGerenciaAtivos.Controls.Add(this.lblDescricaoAtivo);
-            this.tabGerenciaAtivos.Controls.Add(this.comboBoxGerenciarAtivosSalas);
             this.tabGerenciaAtivos.Controls.Add(this.txtDescricaoAtivo);
             this.tabGerenciaAtivos.Location = new System.Drawing.Point(4, 22);
             this.tabGerenciaAtivos.Name = "tabGerenciaAtivos";
@@ -193,26 +185,6 @@ namespace ControleAtivos
             this.dataGridViewAtivos.Size = new System.Drawing.Size(1009, 436);
             this.dataGridViewAtivos.TabIndex = 14;
             // 
-            // lblDataModificacao
-            // 
-            this.lblDataModificacao.AutoSize = true;
-            this.lblDataModificacao.Location = new System.Drawing.Point(563, 59);
-            this.lblDataModificacao.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDataModificacao.Name = "lblDataModificacao";
-            this.lblDataModificacao.Size = new System.Drawing.Size(121, 13);
-            this.lblDataModificacao.TabIndex = 13;
-            this.lblDataModificacao.Text = "Data de Movimentação:";
-            this.lblDataModificacao.Click += new System.EventHandler(this.lblDataSaidaAtivo_Click);
-            // 
-            // dateTimePickerDataModificacao
-            // 
-            this.dateTimePickerDataModificacao.Location = new System.Drawing.Point(688, 54);
-            this.dateTimePickerDataModificacao.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePickerDataModificacao.Name = "dateTimePickerDataModificacao";
-            this.dateTimePickerDataModificacao.Size = new System.Drawing.Size(151, 20);
-            this.dateTimePickerDataModificacao.TabIndex = 11;
-            this.dateTimePickerDataModificacao.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
-            // 
             // lblCodigoRfId
             // 
             this.lblCodigoRfId.AutoSize = true;
@@ -251,16 +223,6 @@ namespace ControleAtivos
             this.txtNumeroSerieAtivo.TabIndex = 4;
             this.txtNumeroSerieAtivo.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // lblGerenciarAtivosSalas
-            // 
-            this.lblGerenciarAtivosSalas.AutoSize = true;
-            this.lblGerenciarAtivosSalas.Location = new System.Drawing.Point(22, 63);
-            this.lblGerenciarAtivosSalas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblGerenciarAtivosSalas.Name = "lblGerenciarAtivosSalas";
-            this.lblGerenciarAtivosSalas.Size = new System.Drawing.Size(31, 13);
-            this.lblGerenciarAtivosSalas.TabIndex = 3;
-            this.lblGerenciarAtivosSalas.Text = "Sala:";
-            // 
             // lblDescricaoAtivo
             // 
             this.lblDescricaoAtivo.AutoSize = true;
@@ -270,15 +232,6 @@ namespace ControleAtivos
             this.lblDescricaoAtivo.Size = new System.Drawing.Size(58, 13);
             this.lblDescricaoAtivo.TabIndex = 2;
             this.lblDescricaoAtivo.Text = "Descrição:";
-            // 
-            // comboBoxGerenciarAtivosSalas
-            // 
-            this.comboBoxGerenciarAtivosSalas.FormattingEnabled = true;
-            this.comboBoxGerenciarAtivosSalas.Location = new System.Drawing.Point(56, 57);
-            this.comboBoxGerenciarAtivosSalas.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxGerenciarAtivosSalas.Name = "comboBoxGerenciarAtivosSalas";
-            this.comboBoxGerenciarAtivosSalas.Size = new System.Drawing.Size(185, 21);
-            this.comboBoxGerenciarAtivosSalas.TabIndex = 1;
             // 
             // txtDescricaoAtivo
             // 
@@ -602,12 +555,8 @@ namespace ControleAtivos
         private System.Windows.Forms.TabPage tabGerenciarSalas;
         private System.Windows.Forms.Label lblNumeroSerieAtivo;
         private System.Windows.Forms.TextBox txtNumeroSerieAtivo;
-        private System.Windows.Forms.Label lblGerenciarAtivosSalas;
         private System.Windows.Forms.Label lblDescricaoAtivo;
-        private System.Windows.Forms.ComboBox comboBoxGerenciarAtivosSalas;
         private System.Windows.Forms.TextBox txtDescricaoAtivo;
-        private System.Windows.Forms.Label lblDataModificacao;
-        private System.Windows.Forms.DateTimePicker dateTimePickerDataModificacao;
         private System.Windows.Forms.Label lblCodigoRfId;
         private System.Windows.Forms.TextBox txtCodigoRfId;
         private System.Windows.Forms.Button btnVizualizarAtivos;

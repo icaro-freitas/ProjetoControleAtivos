@@ -11,8 +11,7 @@ namespace ControleAtivos.Model
     class Ativo
     {
         private int id_ativo;
-        private String descricao;
-        private int id_sala;
+        private String descricao;       
         private int num_serie;
         private String rfid;
         private DateTime data_cadastro;        
