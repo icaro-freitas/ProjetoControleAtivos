@@ -17,12 +17,13 @@ namespace ControleAtivos
         public FormularioPrincipal()
         {
             InitializeComponent();
-        }               
+        }
 
         private void BtnConectar_Click(object sender, EventArgs e)
         {
-            
-            try {
+
+            try
+            {
                 if (serialPort1.IsOpen) serialPort1.Close();
                 else
                 {
@@ -37,7 +38,9 @@ namespace ControleAtivos
                 btnProcurar.Enabled = false;
                 lblStatusComunicacao.Text = "A PORTA ESTÁ ABERTA";
                 lblStatusComunicacao.ForeColor = Color.Green;
-            } catch {
+            }
+            catch
+            {
                 MessageBox.Show("ERRO NA INSERÇÃO DOS PARÂMETROS");
                 btnConectar.Enabled = true;
                 btnDesconectar.Enabled = false;
@@ -47,8 +50,8 @@ namespace ControleAtivos
                 //lblStatusComunicacao.Text = "A PORTA ESTÁ ABERTA";
                 //lblStatusComunicacao.ForeColor = Color.Green;
             }
-            
-            
+
+
 
         }
 
@@ -61,17 +64,18 @@ namespace ControleAtivos
         private void ScanCOMPort()
         {
             cboPortaCOM.Items.Clear();
-            foreach(string portas in SerialPort.GetPortNames())
+            foreach (string portas in SerialPort.GetPortNames())
             {
                 cboPortaCOM.Items.Add(portas);
             }
-            try {
+            try
+            {
                 cboPortaCOM.SelectedIndex = 0;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                
-            }            
+
+            }
         }
 
         private void BtnProcurar_Click(object sender, EventArgs e)
@@ -83,7 +87,7 @@ namespace ControleAtivos
         {
             try
             {
-                serialPort1.Close();                
+                serialPort1.Close();
                 btnConectar.Enabled = true;
                 btnDesconectar.Enabled = false;
                 cboPortaCOM.Enabled = true;
@@ -92,11 +96,12 @@ namespace ControleAtivos
                 lblStatusComunicacao.Text = "A PORTA ESTÁ FECHADA";
                 lblStatusComunicacao.ForeColor = Color.Red;
             }
-            catch {                
+            catch
+            {
                 btnConectar.Enabled = false;
                 btnDesconectar.Enabled = true;
                 cboPortaCOM.Enabled = false;
-                cboBaudRate.Enabled = false; 
+                cboBaudRate.Enabled = false;
                 btnProcurar.Enabled = false;
                 lblStatusComunicacao.Text = "A PORTA ESTÁ ABERTA";
                 lblStatusComunicacao.ForeColor = Color.Green;
@@ -158,7 +163,25 @@ namespace ControleAtivos
 
         private void BtnCadastrarSala_Click(object sender, EventArgs e)
         {
-                 
+            if (!String.IsNullOrEmpty(txtDescricaoSala.Text) && !String.IsNullOrEmpty(txtNomeSala.Text))
+            {
+                Sala sala = new Sala();
+                sala.Descricao = txtDescricaoSala.Text;
+                sala.Nome = txtNomeSala.Text;
+                if (sala.Save())
+                {
+                    MessageBox.Show("Sala cadastrada com sucesso!", "Cadastro da sala", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Falha no cadastro!", "Cadastro da sala", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nome da sala vazio!", "Cadastro da sala", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
 
         }
 

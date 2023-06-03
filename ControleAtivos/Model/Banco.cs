@@ -9,7 +9,7 @@ namespace ControleAtivos.Model
 {
     class Banco
     {
-        private const String myConString = "SERVER=localhost;DATABASE=Ativos;UID=root;PASSWORD=12345678";
+        private const String myConString = "SERVER=localhost;DATABASE=ativos1;UID=root;PASSWORD=12345678";
         private readonly MySqlConnection connection;
 
         public Banco()

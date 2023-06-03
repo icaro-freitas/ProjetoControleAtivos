@@ -73,6 +73,8 @@ namespace ControleAtivos
             this.lblPortaCom = new System.Windows.Forms.Label();
             this.lblConfiguracoes = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.txtNomeSala = new System.Windows.Forms.TextBox();
+            this.lblNomeSala = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabConsulta.SuspendLayout();
@@ -288,6 +290,8 @@ namespace ControleAtivos
             // 
             // tabGerenciarSalas
             // 
+            this.tabGerenciarSalas.Controls.Add(this.lblNomeSala);
+            this.tabGerenciarSalas.Controls.Add(this.txtNomeSala);
             this.tabGerenciarSalas.Controls.Add(this.btnExcluirSala);
             this.tabGerenciarSalas.Controls.Add(this.btnAtualizarSala);
             this.tabGerenciarSalas.Controls.Add(this.btnVizualizarSala);
@@ -360,7 +364,7 @@ namespace ControleAtivos
             // lblDescricaoSala
             // 
             this.lblDescricaoSala.AutoSize = true;
-            this.lblDescricaoSala.Location = new System.Drawing.Point(26, 44);
+            this.lblDescricaoSala.Location = new System.Drawing.Point(25, 51);
             this.lblDescricaoSala.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDescricaoSala.Name = "lblDescricaoSala";
             this.lblDescricaoSala.Size = new System.Drawing.Size(58, 13);
@@ -369,7 +373,7 @@ namespace ControleAtivos
             // 
             // txtDescricaoSala
             // 
-            this.txtDescricaoSala.Location = new System.Drawing.Point(85, 41);
+            this.txtDescricaoSala.Location = new System.Drawing.Point(84, 48);
             this.txtDescricaoSala.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescricaoSala.Name = "txtDescricaoSala";
             this.txtDescricaoSala.Size = new System.Drawing.Size(655, 20);
@@ -534,6 +538,24 @@ namespace ControleAtivos
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SerialPort1_DataReceived);
             // 
+            // txtNomeSala
+            // 
+            this.txtNomeSala.Location = new System.Drawing.Point(84, 15);
+            this.txtNomeSala.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNomeSala.Name = "txtNomeSala";
+            this.txtNomeSala.Size = new System.Drawing.Size(655, 20);
+            this.txtNomeSala.TabIndex = 28;
+            // 
+            // lblNomeSala
+            // 
+            this.lblNomeSala.AutoSize = true;
+            this.lblNomeSala.Location = new System.Drawing.Point(25, 18);
+            this.lblNomeSala.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNomeSala.Name = "lblNomeSala";
+            this.lblNomeSala.Size = new System.Drawing.Size(38, 13);
+            this.lblNomeSala.TabIndex = 29;
+            this.lblNomeSala.Text = "Nome:";
+            // 
             // FormularioPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -603,6 +625,8 @@ namespace ControleAtivos
         private System.Windows.Forms.Label lblLeituraDados;
         private System.Windows.Forms.TextBox txtRecepcaoDados;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Label lblNomeSala;
+        private System.Windows.Forms.TextBox txtNomeSala;
     }
 }
 

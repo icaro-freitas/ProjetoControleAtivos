@@ -10,6 +10,7 @@ namespace ControleAtivos.Model
     class Sala
     {
         private int id_sala;
+        private String nome;
         private String descricao;
         private Banco banco;
 
@@ -18,9 +19,10 @@ namespace ControleAtivos.Model
             banco = new Banco();
         }
 
-        public Sala(int id_sala, string descricao)
+        public Sala(int id_sala, String nome, string descricao)
         {
             this.id_sala = id_sala;
+            this.nome = nome;
             this.descricao = descricao;
             banco = new Banco();
         }
@@ -37,30 +39,37 @@ namespace ControleAtivos.Model
             set { descricao = value; }
         }
 
-        public void Save()
+        public String Nome
+        {
+            get { return nome; }
+            set { nome = value; }
+        }
+
+        public bool Save()
         {
             MySqlCommand command = this.banco.Connection.CreateCommand();
 
-            command.CommandText = "INSERT INTO sala(descricao) VALUES(@1)";
-            command.Parameters.Add("@1",MySqlDbType.VarChar,50).Value = Descricao;
-            
+            command.CommandText = "INSERT INTO sala(nome,descricao) VALUES(@1,@2)";
+            command.Parameters.Add("@1", MySqlDbType.VarChar, 50).Value = Nome;
+            command.Parameters.Add("@2", MySqlDbType.VarChar, 50).Value = Descricao;
+
             //Checar insercao de datas no banco de dados.
             //int quantidadeTuplasAfetadas =  command.ExecuteNonQuery();
             banco.Connection.Open();
-            command.ExecuteNonQuery();
+            int quantidadeTuplasAfetadas = command.ExecuteNonQuery();
             banco.Connection.Close();
-
+            return quantidadeTuplasAfetadas > 0;
         }
 
-        public void  Update()
+        public void Update()
         {
             MySqlCommand command = this.banco.Connection.CreateCommand();
 
             command.CommandText = "UPDATE sala SET descricao = @1 WHERE sala.id_sala = @2";
-            command.Parameters.Add("@1", MySqlDbType.VarChar, 50).Value =Descricao;
+            command.Parameters.Add("@1", MySqlDbType.VarChar, 50).Value = Descricao;
             command.Parameters.Add("@2", MySqlDbType.Int32).Value = Id_sala;
 
-           
+
             //int quantidadeTuplasAfetadas =  command.ExecuteNonQuery();
             banco.Connection.Open();
             command.ExecuteNonQuery();
@@ -83,7 +92,8 @@ namespace ControleAtivos.Model
 
         }
 
-        public Sala GetByDesc() {
+        public Sala GetByDesc()
+        {
 
             MySqlCommand command = this.banco.Connection.CreateCommand();
             MySqlDataReader reader;
@@ -94,7 +104,7 @@ namespace ControleAtivos.Model
             banco.Connection.Open();
             reader = command.ExecuteReader();
             Id_sala = reader.GetInt32("id_sala");
-            Descricao = reader.GetString("descricao");           
+            Descricao = reader.GetString("descricao");
 
             banco.Connection.Close();
             return this;
@@ -107,8 +117,8 @@ namespace ControleAtivos.Model
             MySqlCommand command = this.banco.Connection.CreateCommand();
             MySqlDataReader reader;
 
-            command.CommandText = "SELECT * FROM sala";           
-            
+            command.CommandText = "SELECT * FROM sala";
+
             banco.Connection.Open();
             reader = command.ExecuteReader();
 
@@ -121,7 +131,7 @@ namespace ControleAtivos.Model
                 sala.Id_sala = reader.GetInt32("id_sala");
                 sala.Descricao = reader.GetString("descricao");
                 salas.Add(sala);
-            } 
+            }
 
             banco.Connection.Close();
             return salas;
