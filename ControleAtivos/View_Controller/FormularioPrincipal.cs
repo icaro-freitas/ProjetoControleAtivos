@@ -19,12 +19,39 @@ namespace ControleAtivos
 
         private void LoadSalas()
         {
+            cboConsultaSalas.Items.Clear();
             dataGridViewSalas.Rows.Clear();
             Sala pegarSalas = new Sala();
             this.salas = pegarSalas.GetAll();
             foreach (Sala sala in salas)
             {
                 dataGridViewSalas.Rows.Add(sala.Nome, sala.Descricao);
+                cboConsultaSalas.Items.Add(sala.Nome);
+            }           
+            try
+            {
+                cboConsultaSalas.SelectedIndex = 0;
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+
+        private void ScanCOMPort()
+        {
+            cboPortaCOM.Items.Clear();
+            foreach (string portas in SerialPort.GetPortNames())
+            {
+                cboPortaCOM.Items.Add(portas);
+            }
+            try
+            {
+                cboPortaCOM.SelectedIndex = 0;
+            }
+            catch (Exception e)
+            {
+
             }
         }
 
@@ -77,22 +104,7 @@ namespace ControleAtivos
             LoadSalas();
         }
 
-        private void ScanCOMPort()
-        {
-            cboPortaCOM.Items.Clear();
-            foreach (string portas in SerialPort.GetPortNames())
-            {
-                cboPortaCOM.Items.Add(portas);
-            }
-            try
-            {
-                cboPortaCOM.SelectedIndex = 0;
-            }
-            catch (Exception e)
-            {
-
-            }
-        }
+       
 
         private void BtnProcurar_Click(object sender, EventArgs e)
         {

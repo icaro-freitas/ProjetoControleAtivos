@@ -34,7 +34,7 @@ namespace ControleAtivos
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabConsulta = new System.Windows.Forms.TabPage();
-            this.comboBoxConsultaSalas = new System.Windows.Forms.ComboBox();
+            this.cboConsultaSalas = new System.Windows.Forms.ComboBox();
             this.tabGerenciaAtivos = new System.Windows.Forms.TabPage();
             this.btnVizualizarAtivos = new System.Windows.Forms.Button();
             this.btnExcluirAtivos = new System.Windows.Forms.Button();
@@ -73,6 +73,9 @@ namespace ControleAtivos
             this.lblPortaCom = new System.Windows.Forms.Label();
             this.lblConfiguracoes = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.tabHistorico = new System.Windows.Forms.TabPage();
+            this.dataGridViewHistorico = new System.Windows.Forms.DataGridView();
+            this.btnCarregarHistorico = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabConsulta.SuspendLayout();
@@ -81,6 +84,8 @@ namespace ControleAtivos
             this.tabGerenciarSalas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalas)).BeginInit();
             this.tabComunicacaoSerial.SuspendLayout();
+            this.tabHistorico.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistorico)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -89,6 +94,7 @@ namespace ControleAtivos
             this.tabControl1.Controls.Add(this.tabGerenciaAtivos);
             this.tabControl1.Controls.Add(this.tabGerenciarSalas);
             this.tabControl1.Controls.Add(this.tabComunicacaoSerial);
+            this.tabControl1.Controls.Add(this.tabHistorico);
             this.tabControl1.Location = new System.Drawing.Point(-2, -2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -97,7 +103,7 @@ namespace ControleAtivos
             // 
             // tabConsulta
             // 
-            this.tabConsulta.Controls.Add(this.comboBoxConsultaSalas);
+            this.tabConsulta.Controls.Add(this.cboConsultaSalas);
             this.tabConsulta.Location = new System.Drawing.Point(4, 22);
             this.tabConsulta.Name = "tabConsulta";
             this.tabConsulta.Padding = new System.Windows.Forms.Padding(3);
@@ -106,14 +112,14 @@ namespace ControleAtivos
             this.tabConsulta.Text = "Consulta Ativos";
             this.tabConsulta.UseVisualStyleBackColor = true;
             // 
-            // comboBoxConsultaSalas
+            // cboConsultaSalas
             // 
-            this.comboBoxConsultaSalas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxConsultaSalas.FormattingEnabled = true;
-            this.comboBoxConsultaSalas.Location = new System.Drawing.Point(6, 6);
-            this.comboBoxConsultaSalas.Name = "comboBoxConsultaSalas";
-            this.comboBoxConsultaSalas.Size = new System.Drawing.Size(121, 24);
-            this.comboBoxConsultaSalas.TabIndex = 0;
+            this.cboConsultaSalas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboConsultaSalas.FormattingEnabled = true;
+            this.cboConsultaSalas.Location = new System.Drawing.Point(6, 6);
+            this.cboConsultaSalas.Name = "cboConsultaSalas";
+            this.cboConsultaSalas.Size = new System.Drawing.Size(121, 24);
+            this.cboConsultaSalas.TabIndex = 0;
             // 
             // tabGerenciaAtivos
             // 
@@ -533,6 +539,37 @@ namespace ControleAtivos
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SerialPort1_DataReceived);
             // 
+            // tabHistorico
+            // 
+            this.tabHistorico.Controls.Add(this.btnCarregarHistorico);
+            this.tabHistorico.Controls.Add(this.dataGridViewHistorico);
+            this.tabHistorico.Location = new System.Drawing.Point(4, 22);
+            this.tabHistorico.Name = "tabHistorico";
+            this.tabHistorico.Size = new System.Drawing.Size(1045, 666);
+            this.tabHistorico.TabIndex = 4;
+            this.tabHistorico.Text = "Histórico";
+            this.tabHistorico.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewHistorico
+            // 
+            this.dataGridViewHistorico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewHistorico.Location = new System.Drawing.Point(9, 49);
+            this.dataGridViewHistorico.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewHistorico.Name = "dataGridViewHistorico";
+            this.dataGridViewHistorico.RowHeadersWidth = 51;
+            this.dataGridViewHistorico.RowTemplate.Height = 24;
+            this.dataGridViewHistorico.Size = new System.Drawing.Size(1009, 436);
+            this.dataGridViewHistorico.TabIndex = 15;
+            // 
+            // btnCarregarHistorico
+            // 
+            this.btnCarregarHistorico.Location = new System.Drawing.Point(9, 21);
+            this.btnCarregarHistorico.Name = "btnCarregarHistorico";
+            this.btnCarregarHistorico.Size = new System.Drawing.Size(75, 23);
+            this.btnCarregarHistorico.TabIndex = 16;
+            this.btnCarregarHistorico.Text = "Carregar";
+            this.btnCarregarHistorico.UseVisualStyleBackColor = true;
+            // 
             // FormularioPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -554,6 +591,8 @@ namespace ControleAtivos
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalas)).EndInit();
             this.tabComunicacaoSerial.ResumeLayout(false);
             this.tabComunicacaoSerial.PerformLayout();
+            this.tabHistorico.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistorico)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -564,7 +603,7 @@ namespace ControleAtivos
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabConsulta;
         private System.Windows.Forms.TabPage tabComunicacaoSerial;
-        private System.Windows.Forms.ComboBox comboBoxConsultaSalas;
+        private System.Windows.Forms.ComboBox cboConsultaSalas;
         private System.Windows.Forms.Label lblConfiguracoes;
         private System.Windows.Forms.Label lblPortaCom;
         private System.Windows.Forms.Label lblBaudRate;
@@ -602,6 +641,9 @@ namespace ControleAtivos
         private System.Windows.Forms.TextBox txtNomeSala;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
+        private System.Windows.Forms.TabPage tabHistorico;
+        private System.Windows.Forms.DataGridView dataGridViewHistorico;
+        private System.Windows.Forms.Button btnCarregarHistorico;
     }
 }
 
