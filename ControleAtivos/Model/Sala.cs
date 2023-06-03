@@ -61,35 +61,34 @@ namespace ControleAtivos.Model
             return quantidadeTuplasAfetadas > 0;
         }
 
-        public void Update()
+        public bool Update()
         {
             MySqlCommand command = this.banco.Connection.CreateCommand();
 
-            command.CommandText = "UPDATE sala SET descricao = @1 WHERE sala.id_sala = @2";
-            command.Parameters.Add("@1", MySqlDbType.VarChar, 50).Value = Descricao;
-            command.Parameters.Add("@2", MySqlDbType.Int32).Value = Id_sala;
+            command.CommandText = "UPDATE sala SET nome = @1, descricao = @2 WHERE sala.id_sala = @3";
+            command.Parameters.Add("@1", MySqlDbType.VarChar, 50).Value = Nome;
+            command.Parameters.Add("@2", MySqlDbType.VarChar, 50).Value = Descricao;
+            command.Parameters.Add("@3", MySqlDbType.Int32).Value = Id_sala;
 
 
             //int quantidadeTuplasAfetadas =  command.ExecuteNonQuery();
             banco.Connection.Open();
-            command.ExecuteNonQuery();
+            int quantidadeTuplasAfetadas = command.ExecuteNonQuery();
             banco.Connection.Close();
-
+            return quantidadeTuplasAfetadas > 0;
         }
 
-        public void Delete()
+        public bool Delete()
         {
-            MySqlCommand command = this.banco.Connection.CreateCommand();
+            MySqlCommand command = banco.Connection.CreateCommand();
 
             command.CommandText = "DELETE FROM sala WHERE sala.id_sala = @1";
             command.Parameters.Add("@1", MySqlDbType.Int32).Value = Id_sala;
-
-
-            //int quantidadeTuplasAfetadas =  command.ExecuteNonQuery();
+            
             banco.Connection.Open();
-            command.ExecuteNonQuery();
+            int quantidadeTuplasAfetadas = command.ExecuteNonQuery();
             banco.Connection.Close();
-
+            return quantidadeTuplasAfetadas > 0;
         }
 
         public Sala GetByDesc()
@@ -119,7 +118,7 @@ namespace ControleAtivos.Model
 
             command.CommandText = "SELECT * FROM sala";
 
-            banco.Connection.Open();
+            this.banco.Connection.Open();
             reader = command.ExecuteReader();
 
             List<Sala> salas = new List<Sala>();
@@ -129,6 +128,7 @@ namespace ControleAtivos.Model
                 //bool isEmpty = Leitor.HasRows;
                 Sala sala = new Sala();
                 sala.Id_sala = reader.GetInt32("id_sala");
+                sala.Nome = reader.GetString("nome");
                 sala.Descricao = reader.GetString("descricao");
                 salas.Add(sala);
             }

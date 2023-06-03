@@ -12,8 +12,23 @@ using ControleAtivos.Model;
 
 namespace ControleAtivos
 {
+
     public partial class FormularioPrincipal : Form
     {
+        private List<Sala> salas;
+
+        private void LoadSalas()
+        {
+            dataGridViewSalas.Rows.Clear();
+            Sala pegarSalas = new Sala();
+            this.salas = pegarSalas.GetAll();
+            foreach (Sala sala in salas)
+            {
+                dataGridViewSalas.Rows.Add(sala.Nome, sala.Descricao);
+            }
+        }
+
+
         public FormularioPrincipal()
         {
             InitializeComponent();
@@ -59,6 +74,7 @@ namespace ControleAtivos
         {
             ScanCOMPort();
             cboBaudRate.SelectedIndex = 9;
+            LoadSalas();
         }
 
         private void ScanCOMPort()
@@ -134,13 +150,74 @@ namespace ControleAtivos
 
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void ButtonAtualizarSala_Click(object sender, EventArgs e)
         {
+            if (!String.IsNullOrEmpty(txtDescricaoSala.Text) && !String.IsNullOrEmpty(txtNomeSala.Text))
+            {
+                Int32 selectedRowCount = dataGridViewSalas.Rows.GetRowCount(DataGridViewElementStates.Selected);
+                if (selectedRowCount > 0)
+                {
+                    if (selectedRowCount <= 1)
+                    {
+
+                        int index = dataGridViewSalas.SelectedRows[0].Index;
+                        Sala sala = salas[index];
+                        sala.Descricao = txtDescricaoSala.Text;
+                        sala.Nome = txtNomeSala.Text;
+                        if (sala.Update())
+                        {
+                            MessageBox.Show("Sala atualizada com sucesso!", "Atualizar sala", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadSalas();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Falha na atualização!", "Atualizar sala", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Mais de uma linha selecionada", "Atualizar sala");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Campos da sala vazios!", "Cadastro da sala", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void ButtonDeletarSala_Click(object sender, EventArgs e)
         {
+
+            Int32 selectedRowCount = dataGridViewSalas.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selectedRowCount > 0)
+            {
+                if (selectedRowCount <= 1)
+                {
+                    DialogResult result = MessageBox.Show("Você deseja realmente deletar o dado?", "Deletar sala", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        int index = dataGridViewSalas.SelectedRows[0].Index;
+                        Sala sala = salas[index];
+
+                        if (sala.Delete())
+                        {
+                            MessageBox.Show("Sala deletada com sucesso!", "Deletar sala", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadSalas();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Falha ao deletar!", "Deletar sala", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Mais de uma linha selecionada", "Deletar sala");
+                }
+            }
 
         }
 
@@ -171,6 +248,7 @@ namespace ControleAtivos
                 if (sala.Save())
                 {
                     MessageBox.Show("Sala cadastrada com sucesso!", "Cadastro da sala", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadSalas();
                 }
                 else
                 {
@@ -179,11 +257,21 @@ namespace ControleAtivos
             }
             else
             {
-                MessageBox.Show("Nome da sala vazio!", "Cadastro da sala", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Campos da sala vazios!", "Cadastro da sala", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void lblDataSaidaAtivo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnCarregarSalas_Click(object sender, EventArgs e)
+        {
+            LoadSalas();
+        }
+
+        private void dataGridViewSalas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

@@ -48,11 +48,15 @@ namespace ControleAtivos
             this.lblDescricaoAtivo = new System.Windows.Forms.Label();
             this.txtDescricaoAtivo = new System.Windows.Forms.TextBox();
             this.tabGerenciarSalas = new System.Windows.Forms.TabPage();
+            this.lblNomeSala = new System.Windows.Forms.Label();
+            this.txtNomeSala = new System.Windows.Forms.TextBox();
             this.btnExcluirSala = new System.Windows.Forms.Button();
             this.btnAtualizarSala = new System.Windows.Forms.Button();
-            this.btnVizualizarSala = new System.Windows.Forms.Button();
+            this.btnCarregarSalas = new System.Windows.Forms.Button();
             this.btnCadastrarSala = new System.Windows.Forms.Button();
             this.dataGridViewSalas = new System.Windows.Forms.DataGridView();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblDescricaoSala = new System.Windows.Forms.Label();
             this.txtDescricaoSala = new System.Windows.Forms.TextBox();
             this.tabComunicacaoSerial = new System.Windows.Forms.TabPage();
@@ -69,8 +73,6 @@ namespace ControleAtivos
             this.lblPortaCom = new System.Windows.Forms.Label();
             this.lblConfiguracoes = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.txtNomeSala = new System.Windows.Forms.TextBox();
-            this.lblNomeSala = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabConsulta.SuspendLayout();
@@ -136,40 +138,40 @@ namespace ControleAtivos
             // 
             // btnVizualizarAtivos
             // 
-            this.btnVizualizarAtivos.Location = new System.Drawing.Point(191, 141);
+            this.btnVizualizarAtivos.Location = new System.Drawing.Point(191, 132);
             this.btnVizualizarAtivos.Margin = new System.Windows.Forms.Padding(2);
             this.btnVizualizarAtivos.Name = "btnVizualizarAtivos";
-            this.btnVizualizarAtivos.Size = new System.Drawing.Size(93, 19);
+            this.btnVizualizarAtivos.Size = new System.Drawing.Size(93, 28);
             this.btnVizualizarAtivos.TabIndex = 18;
             this.btnVizualizarAtivos.Text = "Visualizar";
             this.btnVizualizarAtivos.UseVisualStyleBackColor = true;
             // 
             // btnExcluirAtivos
             // 
-            this.btnExcluirAtivos.Location = new System.Drawing.Point(710, 141);
+            this.btnExcluirAtivos.Location = new System.Drawing.Point(711, 132);
             this.btnExcluirAtivos.Margin = new System.Windows.Forms.Padding(2);
             this.btnExcluirAtivos.Name = "btnExcluirAtivos";
-            this.btnExcluirAtivos.Size = new System.Drawing.Size(106, 19);
+            this.btnExcluirAtivos.Size = new System.Drawing.Size(106, 28);
             this.btnExcluirAtivos.TabIndex = 17;
             this.btnExcluirAtivos.Text = "Excluir";
             this.btnExcluirAtivos.UseVisualStyleBackColor = true;
             // 
             // btnAtualizarAtivos
             // 
-            this.btnAtualizarAtivos.Location = new System.Drawing.Point(548, 141);
+            this.btnAtualizarAtivos.Location = new System.Drawing.Point(549, 132);
             this.btnAtualizarAtivos.Margin = new System.Windows.Forms.Padding(2);
             this.btnAtualizarAtivos.Name = "btnAtualizarAtivos";
-            this.btnAtualizarAtivos.Size = new System.Drawing.Size(93, 19);
+            this.btnAtualizarAtivos.Size = new System.Drawing.Size(93, 28);
             this.btnAtualizarAtivos.TabIndex = 16;
             this.btnAtualizarAtivos.Text = "Atualizar";
             this.btnAtualizarAtivos.UseVisualStyleBackColor = true;
             // 
             // btnCadastroAtivos
             // 
-            this.btnCadastroAtivos.Location = new System.Drawing.Point(39, 141);
+            this.btnCadastroAtivos.Location = new System.Drawing.Point(39, 132);
             this.btnCadastroAtivos.Margin = new System.Windows.Forms.Padding(2);
             this.btnCadastroAtivos.Name = "btnCadastroAtivos";
-            this.btnCadastroAtivos.Size = new System.Drawing.Size(89, 19);
+            this.btnCadastroAtivos.Size = new System.Drawing.Size(89, 28);
             this.btnCadastroAtivos.TabIndex = 15;
             this.btnCadastroAtivos.Text = "Cadastrar";
             this.btnCadastroAtivos.UseVisualStyleBackColor = true;
@@ -177,7 +179,7 @@ namespace ControleAtivos
             // dataGridViewAtivos
             // 
             this.dataGridViewAtivos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAtivos.Location = new System.Drawing.Point(16, 171);
+            this.dataGridViewAtivos.Location = new System.Drawing.Point(9, 164);
             this.dataGridViewAtivos.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewAtivos.Name = "dataGridViewAtivos";
             this.dataGridViewAtivos.RowHeadersWidth = 51;
@@ -247,7 +249,7 @@ namespace ControleAtivos
             this.tabGerenciarSalas.Controls.Add(this.txtNomeSala);
             this.tabGerenciarSalas.Controls.Add(this.btnExcluirSala);
             this.tabGerenciarSalas.Controls.Add(this.btnAtualizarSala);
-            this.tabGerenciarSalas.Controls.Add(this.btnVizualizarSala);
+            this.tabGerenciarSalas.Controls.Add(this.btnCarregarSalas);
             this.tabGerenciarSalas.Controls.Add(this.btnCadastrarSala);
             this.tabGerenciarSalas.Controls.Add(this.dataGridViewSalas);
             this.tabGerenciarSalas.Controls.Add(this.lblDescricaoSala);
@@ -260,44 +262,63 @@ namespace ControleAtivos
             this.tabGerenciarSalas.Text = "Gerenciar Salas";
             this.tabGerenciarSalas.UseVisualStyleBackColor = true;
             // 
+            // lblNomeSala
+            // 
+            this.lblNomeSala.AutoSize = true;
+            this.lblNomeSala.Location = new System.Drawing.Point(25, 18);
+            this.lblNomeSala.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNomeSala.Name = "lblNomeSala";
+            this.lblNomeSala.Size = new System.Drawing.Size(38, 13);
+            this.lblNomeSala.TabIndex = 29;
+            this.lblNomeSala.Text = "Nome:";
+            // 
+            // txtNomeSala
+            // 
+            this.txtNomeSala.Location = new System.Drawing.Point(84, 15);
+            this.txtNomeSala.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNomeSala.Name = "txtNomeSala";
+            this.txtNomeSala.Size = new System.Drawing.Size(655, 20);
+            this.txtNomeSala.TabIndex = 28;
+            // 
             // btnExcluirSala
             // 
             this.btnExcluirSala.Location = new System.Drawing.Point(646, 93);
             this.btnExcluirSala.Margin = new System.Windows.Forms.Padding(2);
             this.btnExcluirSala.Name = "btnExcluirSala";
-            this.btnExcluirSala.Size = new System.Drawing.Size(93, 19);
+            this.btnExcluirSala.Size = new System.Drawing.Size(93, 25);
             this.btnExcluirSala.TabIndex = 27;
             this.btnExcluirSala.Text = "Excluir";
             this.btnExcluirSala.UseVisualStyleBackColor = true;
-            this.btnExcluirSala.Click += new System.EventHandler(this.button7_Click);
+            this.btnExcluirSala.Click += new System.EventHandler(this.ButtonDeletarSala_Click);
             // 
             // btnAtualizarSala
             // 
             this.btnAtualizarSala.Location = new System.Drawing.Point(494, 93);
             this.btnAtualizarSala.Margin = new System.Windows.Forms.Padding(2);
             this.btnAtualizarSala.Name = "btnAtualizarSala";
-            this.btnAtualizarSala.Size = new System.Drawing.Size(89, 19);
+            this.btnAtualizarSala.Size = new System.Drawing.Size(89, 25);
             this.btnAtualizarSala.TabIndex = 26;
             this.btnAtualizarSala.Text = "Atualizar";
             this.btnAtualizarSala.UseVisualStyleBackColor = true;
-            this.btnAtualizarSala.Click += new System.EventHandler(this.button8_Click);
+            this.btnAtualizarSala.Click += new System.EventHandler(this.ButtonAtualizarSala_Click);
             // 
-            // btnVizualizarSala
+            // btnCarregarSalas
             // 
-            this.btnVizualizarSala.Location = new System.Drawing.Point(184, 93);
-            this.btnVizualizarSala.Margin = new System.Windows.Forms.Padding(2);
-            this.btnVizualizarSala.Name = "btnVizualizarSala";
-            this.btnVizualizarSala.Size = new System.Drawing.Size(93, 19);
-            this.btnVizualizarSala.TabIndex = 25;
-            this.btnVizualizarSala.Text = "Visualizar";
-            this.btnVizualizarSala.UseVisualStyleBackColor = true;
+            this.btnCarregarSalas.Location = new System.Drawing.Point(184, 93);
+            this.btnCarregarSalas.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCarregarSalas.Name = "btnCarregarSalas";
+            this.btnCarregarSalas.Size = new System.Drawing.Size(93, 25);
+            this.btnCarregarSalas.TabIndex = 25;
+            this.btnCarregarSalas.Text = "Carregar";
+            this.btnCarregarSalas.UseVisualStyleBackColor = true;
+            this.btnCarregarSalas.Click += new System.EventHandler(this.BtnCarregarSalas_Click);
             // 
             // btnCadastrarSala
             // 
             this.btnCadastrarSala.Location = new System.Drawing.Point(32, 93);
             this.btnCadastrarSala.Margin = new System.Windows.Forms.Padding(2);
             this.btnCadastrarSala.Name = "btnCadastrarSala";
-            this.btnCadastrarSala.Size = new System.Drawing.Size(89, 19);
+            this.btnCadastrarSala.Size = new System.Drawing.Size(89, 25);
             this.btnCadastrarSala.TabIndex = 24;
             this.btnCadastrarSala.Text = "Cadastrar";
             this.btnCadastrarSala.UseVisualStyleBackColor = true;
@@ -305,14 +326,35 @@ namespace ControleAtivos
             // 
             // dataGridViewSalas
             // 
+            this.dataGridViewSalas.AllowUserToAddRows = false;
+            this.dataGridViewSalas.AllowUserToDeleteRows = false;
             this.dataGridViewSalas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSalas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nome,
+            this.Descricao});
             this.dataGridViewSalas.Location = new System.Drawing.Point(8, 122);
             this.dataGridViewSalas.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewSalas.Name = "dataGridViewSalas";
             this.dataGridViewSalas.RowHeadersWidth = 51;
             this.dataGridViewSalas.RowTemplate.Height = 24;
+            this.dataGridViewSalas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSalas.Size = new System.Drawing.Size(1009, 471);
             this.dataGridViewSalas.TabIndex = 23;
+            this.dataGridViewSalas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalas_CellContentClick);
+            // 
+            // Nome
+            // 
+            this.Nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            // 
+            // Descricao
+            // 
+            this.Descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Descricao.HeaderText = "Descrição";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
             // 
             // lblDescricaoSala
             // 
@@ -491,24 +533,6 @@ namespace ControleAtivos
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SerialPort1_DataReceived);
             // 
-            // txtNomeSala
-            // 
-            this.txtNomeSala.Location = new System.Drawing.Point(84, 15);
-            this.txtNomeSala.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNomeSala.Name = "txtNomeSala";
-            this.txtNomeSala.Size = new System.Drawing.Size(655, 20);
-            this.txtNomeSala.TabIndex = 28;
-            // 
-            // lblNomeSala
-            // 
-            this.lblNomeSala.AutoSize = true;
-            this.lblNomeSala.Location = new System.Drawing.Point(25, 18);
-            this.lblNomeSala.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblNomeSala.Name = "lblNomeSala";
-            this.lblNomeSala.Size = new System.Drawing.Size(38, 13);
-            this.lblNomeSala.TabIndex = 29;
-            this.lblNomeSala.Text = "Nome:";
-            // 
             // FormularioPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -566,7 +590,7 @@ namespace ControleAtivos
         private System.Windows.Forms.DataGridView dataGridViewAtivos;
         private System.Windows.Forms.Button btnExcluirSala;
         private System.Windows.Forms.Button btnAtualizarSala;
-        private System.Windows.Forms.Button btnVizualizarSala;
+        private System.Windows.Forms.Button btnCarregarSalas;
         private System.Windows.Forms.Button btnCadastrarSala;
         private System.Windows.Forms.DataGridView dataGridViewSalas;
         private System.Windows.Forms.Label lblDescricaoSala;
@@ -576,6 +600,8 @@ namespace ControleAtivos
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label lblNomeSala;
         private System.Windows.Forms.TextBox txtNomeSala;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
     }
 }
 
