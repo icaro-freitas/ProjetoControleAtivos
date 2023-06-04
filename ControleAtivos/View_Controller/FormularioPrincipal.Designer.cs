@@ -36,11 +36,15 @@ namespace ControleAtivos
             this.tabConsulta = new System.Windows.Forms.TabPage();
             this.cboConsultaSalas = new System.Windows.Forms.ComboBox();
             this.tabGerenciaAtivos = new System.Windows.Forms.TabPage();
-            this.btnVizualizarAtivos = new System.Windows.Forms.Button();
+            this.btnCarregarAtivos = new System.Windows.Forms.Button();
             this.btnExcluirAtivos = new System.Windows.Forms.Button();
             this.btnAtualizarAtivos = new System.Windows.Forms.Button();
             this.btnCadastroAtivos = new System.Windows.Forms.Button();
             this.dataGridViewAtivos = new System.Windows.Forms.DataGridView();
+            this.DescricaoAtivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Num_Serie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RFID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCodigoRfId = new System.Windows.Forms.Label();
             this.txtCodigoRfId = new System.Windows.Forms.TextBox();
             this.lblNumeroSerieAtivo = new System.Windows.Forms.Label();
@@ -72,10 +76,10 @@ namespace ControleAtivos
             this.lblBaudRate = new System.Windows.Forms.Label();
             this.lblPortaCom = new System.Windows.Forms.Label();
             this.lblConfiguracoes = new System.Windows.Forms.Label();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.tabHistorico = new System.Windows.Forms.TabPage();
-            this.dataGridViewHistorico = new System.Windows.Forms.DataGridView();
             this.btnCarregarHistorico = new System.Windows.Forms.Button();
+            this.dataGridViewHistorico = new System.Windows.Forms.DataGridView();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabConsulta.SuspendLayout();
@@ -123,7 +127,7 @@ namespace ControleAtivos
             // 
             // tabGerenciaAtivos
             // 
-            this.tabGerenciaAtivos.Controls.Add(this.btnVizualizarAtivos);
+            this.tabGerenciaAtivos.Controls.Add(this.btnCarregarAtivos);
             this.tabGerenciaAtivos.Controls.Add(this.btnExcluirAtivos);
             this.tabGerenciaAtivos.Controls.Add(this.btnAtualizarAtivos);
             this.tabGerenciaAtivos.Controls.Add(this.btnCadastroAtivos);
@@ -142,15 +146,16 @@ namespace ControleAtivos
             this.tabGerenciaAtivos.Text = "Gerenciar Ativos";
             this.tabGerenciaAtivos.UseVisualStyleBackColor = true;
             // 
-            // btnVizualizarAtivos
+            // btnCarregarAtivos
             // 
-            this.btnVizualizarAtivos.Location = new System.Drawing.Point(191, 132);
-            this.btnVizualizarAtivos.Margin = new System.Windows.Forms.Padding(2);
-            this.btnVizualizarAtivos.Name = "btnVizualizarAtivos";
-            this.btnVizualizarAtivos.Size = new System.Drawing.Size(93, 28);
-            this.btnVizualizarAtivos.TabIndex = 18;
-            this.btnVizualizarAtivos.Text = "Visualizar";
-            this.btnVizualizarAtivos.UseVisualStyleBackColor = true;
+            this.btnCarregarAtivos.Location = new System.Drawing.Point(191, 132);
+            this.btnCarregarAtivos.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCarregarAtivos.Name = "btnCarregarAtivos";
+            this.btnCarregarAtivos.Size = new System.Drawing.Size(93, 28);
+            this.btnCarregarAtivos.TabIndex = 18;
+            this.btnCarregarAtivos.Text = "Carregar";
+            this.btnCarregarAtivos.UseVisualStyleBackColor = true;
+            this.btnCarregarAtivos.Click += new System.EventHandler(this.BtnCarregarAtivos_Click);
             // 
             // btnExcluirAtivos
             // 
@@ -161,6 +166,7 @@ namespace ControleAtivos
             this.btnExcluirAtivos.TabIndex = 17;
             this.btnExcluirAtivos.Text = "Excluir";
             this.btnExcluirAtivos.UseVisualStyleBackColor = true;
+            this.btnExcluirAtivos.Click += new System.EventHandler(this.BtnExcluirAtivos_Click);
             // 
             // btnAtualizarAtivos
             // 
@@ -171,6 +177,7 @@ namespace ControleAtivos
             this.btnAtualizarAtivos.TabIndex = 16;
             this.btnAtualizarAtivos.Text = "Atualizar";
             this.btnAtualizarAtivos.UseVisualStyleBackColor = true;
+            this.btnAtualizarAtivos.Click += new System.EventHandler(this.BtnAtualizarAtivos_Click);
             // 
             // btnCadastroAtivos
             // 
@@ -181,30 +188,69 @@ namespace ControleAtivos
             this.btnCadastroAtivos.TabIndex = 15;
             this.btnCadastroAtivos.Text = "Cadastrar";
             this.btnCadastroAtivos.UseVisualStyleBackColor = true;
+            this.btnCadastroAtivos.Click += new System.EventHandler(this.BtnCadastroAtivos_Click);
             // 
             // dataGridViewAtivos
             // 
+            this.dataGridViewAtivos.AllowUserToAddRows = false;
+            this.dataGridViewAtivos.AllowUserToDeleteRows = false;
             this.dataGridViewAtivos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAtivos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DescricaoAtivo,
+            this.Num_Serie,
+            this.RFID,
+            this.DataCadastro});
             this.dataGridViewAtivos.Location = new System.Drawing.Point(9, 164);
             this.dataGridViewAtivos.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewAtivos.Name = "dataGridViewAtivos";
             this.dataGridViewAtivos.RowHeadersWidth = 51;
             this.dataGridViewAtivos.RowTemplate.Height = 24;
+            this.dataGridViewAtivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewAtivos.Size = new System.Drawing.Size(1009, 436);
             this.dataGridViewAtivos.TabIndex = 14;
+            this.dataGridViewAtivos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAtivos_CellContentClick);
+            // 
+            // DescricaoAtivo
+            // 
+            this.DescricaoAtivo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DescricaoAtivo.HeaderText = "Descrição";
+            this.DescricaoAtivo.Name = "DescricaoAtivo";
+            this.DescricaoAtivo.ReadOnly = true;
+            // 
+            // Num_Serie
+            // 
+            this.Num_Serie.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Num_Serie.HeaderText = "Número de Serie";
+            this.Num_Serie.Name = "Num_Serie";
+            this.Num_Serie.ReadOnly = true;
+            // 
+            // RFID
+            // 
+            this.RFID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.RFID.HeaderText = "RFID";
+            this.RFID.Name = "RFID";
+            this.RFID.ReadOnly = true;
+            // 
+            // DataCadastro
+            // 
+            this.DataCadastro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DataCadastro.HeaderText = "Data de Cadastro";
+            this.DataCadastro.Name = "DataCadastro";
+            this.DataCadastro.ReadOnly = true;
             // 
             // lblCodigoRfId
             // 
             this.lblCodigoRfId.AutoSize = true;
-            this.lblCodigoRfId.Location = new System.Drawing.Point(348, 59);
+            this.lblCodigoRfId.Location = new System.Drawing.Point(334, 60);
             this.lblCodigoRfId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCodigoRfId.Name = "lblCodigoRfId";
-            this.lblCodigoRfId.Size = new System.Drawing.Size(61, 13);
+            this.lblCodigoRfId.Size = new System.Drawing.Size(71, 13);
             this.lblCodigoRfId.TabIndex = 9;
-            this.lblCodigoRfId.Text = "Código rfId:";
+            this.lblCodigoRfId.Text = "Código RFID:";
             // 
             // txtCodigoRfId
             // 
+            this.txtCodigoRfId.Enabled = false;
             this.txtCodigoRfId.Location = new System.Drawing.Point(409, 57);
             this.txtCodigoRfId.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodigoRfId.Name = "txtCodigoRfId";
@@ -535,10 +581,6 @@ namespace ControleAtivos
             this.lblConfiguracoes.TabIndex = 0;
             this.lblConfiguracoes.Text = "Configurações";
             // 
-            // serialPort1
-            // 
-            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SerialPort1_DataReceived);
-            // 
             // tabHistorico
             // 
             this.tabHistorico.Controls.Add(this.btnCarregarHistorico);
@@ -549,6 +591,15 @@ namespace ControleAtivos
             this.tabHistorico.TabIndex = 4;
             this.tabHistorico.Text = "Histórico";
             this.tabHistorico.UseVisualStyleBackColor = true;
+            // 
+            // btnCarregarHistorico
+            // 
+            this.btnCarregarHistorico.Location = new System.Drawing.Point(9, 21);
+            this.btnCarregarHistorico.Name = "btnCarregarHistorico";
+            this.btnCarregarHistorico.Size = new System.Drawing.Size(75, 23);
+            this.btnCarregarHistorico.TabIndex = 16;
+            this.btnCarregarHistorico.Text = "Carregar";
+            this.btnCarregarHistorico.UseVisualStyleBackColor = true;
             // 
             // dataGridViewHistorico
             // 
@@ -561,14 +612,9 @@ namespace ControleAtivos
             this.dataGridViewHistorico.Size = new System.Drawing.Size(1009, 436);
             this.dataGridViewHistorico.TabIndex = 15;
             // 
-            // btnCarregarHistorico
+            // serialPort1
             // 
-            this.btnCarregarHistorico.Location = new System.Drawing.Point(9, 21);
-            this.btnCarregarHistorico.Name = "btnCarregarHistorico";
-            this.btnCarregarHistorico.Size = new System.Drawing.Size(75, 23);
-            this.btnCarregarHistorico.TabIndex = 16;
-            this.btnCarregarHistorico.Text = "Carregar";
-            this.btnCarregarHistorico.UseVisualStyleBackColor = true;
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SerialPort1_DataReceived);
             // 
             // FormularioPrincipal
             // 
@@ -577,7 +623,7 @@ namespace ControleAtivos
             this.ClientSize = new System.Drawing.Size(1028, 609);
             this.Controls.Add(this.tabControl1);
             this.Name = "FormularioPrincipal";
-            this.Text = "Controles de Ativos";
+            this.Text = "Controle de Ativos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormularioPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
@@ -622,7 +668,7 @@ namespace ControleAtivos
         private System.Windows.Forms.TextBox txtDescricaoAtivo;
         private System.Windows.Forms.Label lblCodigoRfId;
         private System.Windows.Forms.TextBox txtCodigoRfId;
-        private System.Windows.Forms.Button btnVizualizarAtivos;
+        private System.Windows.Forms.Button btnCarregarAtivos;
         private System.Windows.Forms.Button btnExcluirAtivos;
         private System.Windows.Forms.Button btnAtualizarAtivos;
         private System.Windows.Forms.Button btnCadastroAtivos;
@@ -644,6 +690,10 @@ namespace ControleAtivos
         private System.Windows.Forms.TabPage tabHistorico;
         private System.Windows.Forms.DataGridView dataGridViewHistorico;
         private System.Windows.Forms.Button btnCarregarHistorico;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DescricaoAtivo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Num_Serie;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RFID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
     }
 }
 

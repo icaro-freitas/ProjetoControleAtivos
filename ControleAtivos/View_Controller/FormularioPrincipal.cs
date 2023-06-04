@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 using ControleAtivos.Model;
+using System.Web;
+using Newtonsoft.Json;
 
 namespace ControleAtivos
 {
@@ -16,6 +18,7 @@ namespace ControleAtivos
     public partial class FormularioPrincipal : Form
     {
         private List<Sala> salas;
+        private List<Ativo> ativos;
 
         private void LoadSalas()
         {
@@ -27,7 +30,7 @@ namespace ControleAtivos
             {
                 dataGridViewSalas.Rows.Add(sala.Nome, sala.Descricao);
                 cboConsultaSalas.Items.Add(sala.Nome);
-            }           
+            }
             try
             {
                 cboConsultaSalas.SelectedIndex = 0;
@@ -36,6 +39,19 @@ namespace ControleAtivos
             {
 
             }
+        }
+
+        private void LoadAtivos()
+        {
+            
+            dataGridViewAtivos.Rows.Clear();
+            Ativo pegarAtivos = new Ativo();
+            this.ativos = pegarAtivos.GetAll();
+            foreach (Ativo ativo in ativos)
+            {
+                dataGridViewAtivos.Rows.Add(ativo.Descricao, ativo.Num_serie, ativo.Rfid, ativo.Data_cadastro.ToString("dd/MM/yyyy HH:mm:ss"));
+            }
+
         }
 
         private void ScanCOMPort()
@@ -102,9 +118,10 @@ namespace ControleAtivos
             ScanCOMPort();
             cboBaudRate.SelectedIndex = 9;
             LoadSalas();
+            LoadAtivos();
         }
 
-       
+
 
         private void BtnProcurar_Click(object sender, EventArgs e)
         {
@@ -164,6 +181,7 @@ namespace ControleAtivos
 
         private void ButtonAtualizarSala_Click(object sender, EventArgs e)
         {
+
             if (!String.IsNullOrEmpty(txtDescricaoSala.Text) && !String.IsNullOrEmpty(txtNomeSala.Text))
             {
                 Int32 selectedRowCount = dataGridViewSalas.Rows.GetRowCount(DataGridViewElementStates.Selected);
@@ -194,7 +212,7 @@ namespace ControleAtivos
             }
             else
             {
-                MessageBox.Show("Campos da sala vazios!", "Cadastro da sala", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Campos da sala vazios!", "Atualizar sala", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
@@ -241,8 +259,13 @@ namespace ControleAtivos
 
         private void ReceberDados(object sender, EventArgs e)
         {
+            String data = serialPort1.ReadLine();
 
-            txtRecepcaoDados.Text += serialPort1.ReadExisting();
+            txtRecepcaoDados.Text += data;
+
+            RFIDSala rfidSala = JsonConvert.DeserializeObject<RFIDSala>(data);
+            txtCodigoRfId.Text = rfidSala.Rfid;
+
         }
 
         private void BtnClear_Click(object sender, EventArgs e)
@@ -273,11 +296,6 @@ namespace ControleAtivos
             }
         }
 
-        private void lblDataSaidaAtivo_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BtnCarregarSalas_Click(object sender, EventArgs e)
         {
             LoadSalas();
@@ -285,6 +303,111 @@ namespace ControleAtivos
 
         private void dataGridViewSalas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void BtnCadastroAtivos_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtCodigoRfId.Text) && !String.IsNullOrEmpty(txtDescricaoAtivo.Text) && !String.IsNullOrEmpty(txtNumeroSerieAtivo.Text))
+            {
+                Ativo ativo = new Ativo();
+                ativo.Descricao = txtDescricaoAtivo.Text;
+                ativo.Num_serie = txtNumeroSerieAtivo.Text;
+                ativo.Rfid = txtCodigoRfId.Text;
+
+                if (ativo.Save())
+                {
+                    MessageBox.Show("Ativo cadastrado com sucesso!", "Cadastro do ativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadAtivos();
+                }
+                else
+                {
+                    MessageBox.Show("Falha no cadastro!", "Cadastro do ativo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Campos do ativo vazios!", "Cadastro do ativo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void dataGridViewAtivos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void BtnCarregarAtivos_Click(object sender, EventArgs e)
+        {
+            LoadAtivos();
+        }
+
+        private void BtnAtualizarAtivos_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtCodigoRfId.Text) && !String.IsNullOrEmpty(txtDescricaoAtivo.Text) && !String.IsNullOrEmpty(txtNumeroSerieAtivo.Text))
+            {
+                Int32 selectedRowCount = dataGridViewAtivos.Rows.GetRowCount(DataGridViewElementStates.Selected);
+                if (selectedRowCount > 0)
+                {
+                    if (selectedRowCount <= 1)
+                    {
+
+                        int index = dataGridViewAtivos.SelectedRows[0].Index;
+                        Ativo ativo = ativos[index];
+                        ativo.Descricao = txtDescricaoAtivo.Text;
+                        ativo.Num_serie = txtNumeroSerieAtivo.Text;
+                        ativo.Rfid = txtCodigoRfId.Text;
+                        if (ativo.Update())
+                        {
+                            MessageBox.Show("Ativo atualizado com sucesso!", "Atualizar Ativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadAtivos();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Falha na atualização!", "Atualizar Ativo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Mais de uma linha selecionada", "Atualizar Ativo");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Campos do ativo vazios!", "Atualizar Ativo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void BtnExcluirAtivos_Click(object sender, EventArgs e)
+        {
+            Int32 selectedRowCount = dataGridViewAtivos.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selectedRowCount > 0)
+            {
+                if (selectedRowCount <= 1)
+                {
+                    DialogResult result = MessageBox.Show("Você deseja realmente deletar o dado?", "Deletar ativo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        int index = dataGridViewAtivos.SelectedRows[0].Index;
+                        Ativo ativo = ativos[index];
+
+                        if (ativo.Delete())
+                        {
+                            MessageBox.Show("Ativo deletado com sucesso!", "Deletar ativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadAtivos();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Falha ao deletar!", "Deletar ativo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Mais de uma linha selecionada", "Deletar ativo");
+                }
+            }
 
         }
     }
