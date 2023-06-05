@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO.Ports;
+using System.Windows.Forms;
 using ControleAtivos.Model;
-using System.Web;
 using Newtonsoft.Json;
 
 namespace ControleAtivos
@@ -19,7 +13,7 @@ namespace ControleAtivos
     {
         private List<Sala> salas;
         private List<Ativo> ativos;
-        private List<AtivoSala>  ativosSala;
+        private List<AtivoSala> ativosSala;
         private List<AtivoSala> historico;
 
         private void LoadSalas()
@@ -45,7 +39,7 @@ namespace ControleAtivos
 
         private void LoadAtivos()
         {
-            
+
             dataGridViewAtivos.Rows.Clear();
             Ativo pegarAtivos = new Ativo();
             this.ativos = pegarAtivos.GetAll();
@@ -76,16 +70,14 @@ namespace ControleAtivos
         {
 
             dataGridViewHistorico.Rows.Clear();
-            AtivoSala pegarAtivosSala = new AtivoSala();             
+            AtivoSala pegarAtivosSala = new AtivoSala();
             this.historico = pegarAtivosSala.GetHistorico();
             foreach (AtivoSala ativoSala in this.historico)
             {
-                dataGridViewHistorico.Rows.Add(ativoSala.Sala.Nome,ativoSala.Ativo.Descricao, ativoSala.Ativo.Num_serie, ativoSala.Ativo.Rfid, ativoSala.Ativo.Data_cadastro.ToString("dd/MM/yyyy HH:mm:ss"), ativoSala.Data_movimentacao.ToString("dd/MM/yyyy HH:mm:ss"));
+                dataGridViewHistorico.Rows.Add(ativoSala.Sala.Nome, ativoSala.Ativo.Descricao, ativoSala.Ativo.Num_serie, ativoSala.Ativo.Rfid, ativoSala.Ativo.Data_cadastro.ToString("dd/MM/yyyy HH:mm:ss"), ativoSala.Data_movimentacao.ToString("dd/MM/yyyy HH:mm:ss"));
             }
 
         }
-
-
 
         private void ScanCOMPort()
         {
@@ -103,7 +95,6 @@ namespace ControleAtivos
 
             }
         }
-
 
         public FormularioPrincipal()
         {
@@ -142,8 +133,6 @@ namespace ControleAtivos
                 //lblStatusComunicacao.ForeColor = Color.Green;
             }
 
-
-
         }
 
         private void FormularioPrincipal_Load(object sender, EventArgs e)
@@ -155,8 +144,6 @@ namespace ControleAtivos
             LoadAtivosSala();
             LoadHistorico();
         }
-
-
 
         private void BtnProcurar_Click(object sender, EventArgs e)
         {
@@ -186,31 +173,6 @@ namespace ControleAtivos
                 lblStatusComunicacao.Text = "A PORTA ESTÁ ABERTA";
                 lblStatusComunicacao.ForeColor = Color.Green;
             }
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -304,7 +266,7 @@ namespace ControleAtivos
 
             Ativo ativo = new Ativo();
             ativo.Rfid = rfid;
-            
+
             if (ativo.CheckByRFIDIfExists())
             {
                 Sala sala = new Sala();
@@ -313,16 +275,18 @@ namespace ControleAtivos
                 ativoSala.Ativo = ativo;
                 ativoSala.Sala = sala;
 
-                if (ativoSala.CheckByRFIDIfItHasRelation()) {
+                if (ativoSala.CheckByRFIDIfItHasRelation())
+                {
                     ativoSala.DeleteRelation();
                     LoadAtivosSala();
                     LoadHistorico();
-                } else
+                }
+                else
                 {
                     ativoSala.SaveRelation();
                     LoadAtivosSala();
-                }               
-            } 
+                }
+            }
 
         }
 
@@ -359,11 +323,6 @@ namespace ControleAtivos
             LoadSalas();
         }
 
-        private void dataGridViewSalas_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void BtnCadastroAtivos_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(txtCodigoRfId.Text) && !String.IsNullOrEmpty(txtDescricaoAtivo.Text) && !String.IsNullOrEmpty(txtNumeroSerieAtivo.Text))
@@ -387,11 +346,6 @@ namespace ControleAtivos
             {
                 MessageBox.Show("Campos do ativo vazios!", "Cadastro do ativo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
-
-        private void dataGridViewAtivos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void BtnCarregarAtivos_Click(object sender, EventArgs e)

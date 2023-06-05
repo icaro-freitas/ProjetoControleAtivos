@@ -83,8 +83,6 @@ namespace ControleAtivos
             this.lblPortaCom = new System.Windows.Forms.Label();
             this.lblConfiguracoes = new System.Windows.Forms.Label();
             this.tabHistorico = new System.Windows.Forms.TabPage();
-            this.btnCarregarHistorico = new System.Windows.Forms.Button();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.dataGridViewHistorico = new System.Windows.Forms.DataGridView();
             this.Sala = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,6 +90,8 @@ namespace ControleAtivos
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCarregarHistorico = new System.Windows.Forms.Button();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabConsulta.SuspendLayout();
@@ -277,7 +277,6 @@ namespace ControleAtivos
             this.dataGridViewAtivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewAtivos.Size = new System.Drawing.Size(1009, 436);
             this.dataGridViewAtivos.TabIndex = 14;
-            this.dataGridViewAtivos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAtivos_CellContentClick);
             // 
             // DescricaoAtivo
             // 
@@ -335,7 +334,6 @@ namespace ControleAtivos
             this.lblNumeroSerieAtivo.Size = new System.Drawing.Size(87, 13);
             this.lblNumeroSerieAtivo.TabIndex = 5;
             this.lblNumeroSerieAtivo.Text = "Número de série:";
-            this.lblNumeroSerieAtivo.Click += new System.EventHandler(this.label3_Click);
             // 
             // txtNumeroSerieAtivo
             // 
@@ -344,7 +342,6 @@ namespace ControleAtivos
             this.txtNumeroSerieAtivo.Name = "txtNumeroSerieAtivo";
             this.txtNumeroSerieAtivo.Size = new System.Drawing.Size(159, 20);
             this.txtNumeroSerieAtivo.TabIndex = 4;
-            this.txtNumeroSerieAtivo.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // lblDescricaoAtivo
             // 
@@ -461,7 +458,6 @@ namespace ControleAtivos
             this.dataGridViewSalas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSalas.Size = new System.Drawing.Size(1009, 471);
             this.dataGridViewSalas.TabIndex = 23;
-            this.dataGridViewSalas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalas_CellContentClick);
             // 
             // Nome
             // 
@@ -661,20 +657,6 @@ namespace ControleAtivos
             this.tabHistorico.Text = "Histórico";
             this.tabHistorico.UseVisualStyleBackColor = true;
             // 
-            // btnCarregarHistorico
-            // 
-            this.btnCarregarHistorico.Location = new System.Drawing.Point(9, 16);
-            this.btnCarregarHistorico.Name = "btnCarregarHistorico";
-            this.btnCarregarHistorico.Size = new System.Drawing.Size(75, 28);
-            this.btnCarregarHistorico.TabIndex = 16;
-            this.btnCarregarHistorico.Text = "Carregar";
-            this.btnCarregarHistorico.UseVisualStyleBackColor = true;
-            this.btnCarregarHistorico.Click += new System.EventHandler(this.btnCarregarHistorico_Click);
-            // 
-            // serialPort1
-            // 
-            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SerialPort1_DataReceived);
-            // 
             // dataGridViewHistorico
             // 
             this.dataGridViewHistorico.AllowUserToAddRows = false;
@@ -736,6 +718,20 @@ namespace ControleAtivos
             this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn9.HeaderText = "Data de Movimentação";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // btnCarregarHistorico
+            // 
+            this.btnCarregarHistorico.Location = new System.Drawing.Point(9, 16);
+            this.btnCarregarHistorico.Name = "btnCarregarHistorico";
+            this.btnCarregarHistorico.Size = new System.Drawing.Size(75, 28);
+            this.btnCarregarHistorico.TabIndex = 16;
+            this.btnCarregarHistorico.Text = "Carregar";
+            this.btnCarregarHistorico.UseVisualStyleBackColor = true;
+            this.btnCarregarHistorico.Click += new System.EventHandler(this.btnCarregarHistorico_Click);
+            // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SerialPort1_DataReceived);
             // 
             // FormularioPrincipal
             // 

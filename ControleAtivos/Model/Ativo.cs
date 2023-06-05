@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
 
@@ -111,30 +108,7 @@ namespace ControleAtivos.Model
             int quantidadeTuplasAfetadas = command.ExecuteNonQuery();
             banco.Connection.Close();
             return quantidadeTuplasAfetadas > 0;
-        }     
-
-        public Ativo GetByDesc()
-        {
-
-            MySqlCommand command = this.banco.Connection.CreateCommand();
-            MySqlDataReader reader;
-
-            command.CommandText = "SELECT * FROM ativos WHERE ativos.descricao = @1";
-            command.Parameters.Add("@1", MySqlDbType.VarChar, 50).Value = Descricao;
-
-            //int quantidadeTuplasAfetadas =  command.ExecuteNonQuery();
-            banco.Connection.Open();
-            reader = command.ExecuteReader();
-            this.Id_ativo = reader.GetInt32("id_ativo");
-            this.Descricao = reader.GetString("descricao");
-            this.Num_serie = reader.GetString("num_serie");
-            this.Rfid = reader.GetString("rfid");
-            this.Data_cadastro = reader.GetDateTime("data_cadastro");
-
-            banco.Connection.Close();
-            return this;
-
-        }
+        }             
 
         public List<Ativo> GetAll()
         {
@@ -188,9 +162,6 @@ namespace ControleAtivos.Model
             return quantity > 0;
 
         }
-
-        
-
 
     }
 }
