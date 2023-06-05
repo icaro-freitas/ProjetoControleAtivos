@@ -111,7 +111,7 @@ namespace ControleAtivos.Model
             int quantidadeTuplasAfetadas = command.ExecuteNonQuery();
             banco.Connection.Close();
             return quantidadeTuplasAfetadas > 0;
-        }
+        }     
 
         public Ativo GetByDesc()
         {
@@ -165,6 +165,31 @@ namespace ControleAtivos.Model
             return ativos;
 
         }
+
+        public bool CheckByRFIDIfExists()
+        {
+
+            MySqlCommand command = this.banco.Connection.CreateCommand();
+            MySqlDataReader reader;
+
+            command.CommandText = "SELECT EXISTS(SELECT 1 FROM ativos WHERE rfid =@1 LIMIT 1) as count";
+            command.Parameters.Add("@1", MySqlDbType.VarChar, 20).Value = Rfid;   
+            
+            banco.Connection.Open();
+            reader = command.ExecuteReader();
+            
+            int quantity = 0;
+            if (reader.Read()) {
+               quantity =  reader.GetInt32("count");
+            }   
+
+            banco.Connection.Close();
+
+            return quantity > 0;
+
+        }
+
+        
 
 
     }

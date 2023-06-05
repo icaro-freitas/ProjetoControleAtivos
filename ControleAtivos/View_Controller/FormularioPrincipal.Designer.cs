@@ -34,6 +34,12 @@ namespace ControleAtivos
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabConsulta = new System.Windows.Forms.TabPage();
+            this.dataGridViewAtivosSala = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataMovimentacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboConsultaSalas = new System.Windows.Forms.ComboBox();
             this.tabGerenciaAtivos = new System.Windows.Forms.TabPage();
             this.btnCarregarAtivos = new System.Windows.Forms.Button();
@@ -78,11 +84,18 @@ namespace ControleAtivos
             this.lblConfiguracoes = new System.Windows.Forms.Label();
             this.tabHistorico = new System.Windows.Forms.TabPage();
             this.btnCarregarHistorico = new System.Windows.Forms.Button();
-            this.dataGridViewHistorico = new System.Windows.Forms.DataGridView();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.dataGridViewHistorico = new System.Windows.Forms.DataGridView();
+            this.Sala = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabConsulta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAtivosSala)).BeginInit();
             this.tabGerenciaAtivos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAtivos)).BeginInit();
             this.tabGerenciarSalas.SuspendLayout();
@@ -107,6 +120,7 @@ namespace ControleAtivos
             // 
             // tabConsulta
             // 
+            this.tabConsulta.Controls.Add(this.dataGridViewAtivosSala);
             this.tabConsulta.Controls.Add(this.cboConsultaSalas);
             this.tabConsulta.Location = new System.Drawing.Point(4, 22);
             this.tabConsulta.Name = "tabConsulta";
@@ -116,6 +130,60 @@ namespace ControleAtivos
             this.tabConsulta.Text = "Consulta Ativos";
             this.tabConsulta.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewAtivosSala
+            // 
+            this.dataGridViewAtivosSala.AllowUserToAddRows = false;
+            this.dataGridViewAtivosSala.AllowUserToDeleteRows = false;
+            this.dataGridViewAtivosSala.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAtivosSala.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.DataMovimentacao});
+            this.dataGridViewAtivosSala.Location = new System.Drawing.Point(9, 46);
+            this.dataGridViewAtivosSala.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewAtivosSala.Name = "dataGridViewAtivosSala";
+            this.dataGridViewAtivosSala.RowHeadersWidth = 51;
+            this.dataGridViewAtivosSala.RowTemplate.Height = 24;
+            this.dataGridViewAtivosSala.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewAtivosSala.Size = new System.Drawing.Size(1009, 436);
+            this.dataGridViewAtivosSala.TabIndex = 15;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Descrição";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Número de Serie";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.HeaderText = "RFID";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Data de Cadastro";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // DataMovimentacao
+            // 
+            this.DataMovimentacao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DataMovimentacao.HeaderText = "Data de Movimentação";
+            this.DataMovimentacao.Name = "DataMovimentacao";
+            // 
             // cboConsultaSalas
             // 
             this.cboConsultaSalas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -124,6 +192,7 @@ namespace ControleAtivos
             this.cboConsultaSalas.Name = "cboConsultaSalas";
             this.cboConsultaSalas.Size = new System.Drawing.Size(121, 24);
             this.cboConsultaSalas.TabIndex = 0;
+            this.cboConsultaSalas.SelectedIndexChanged += new System.EventHandler(this.cboConsultaSalas_SelectedIndexChanged);
             // 
             // tabGerenciaAtivos
             // 
@@ -583,8 +652,8 @@ namespace ControleAtivos
             // 
             // tabHistorico
             // 
-            this.tabHistorico.Controls.Add(this.btnCarregarHistorico);
             this.tabHistorico.Controls.Add(this.dataGridViewHistorico);
+            this.tabHistorico.Controls.Add(this.btnCarregarHistorico);
             this.tabHistorico.Location = new System.Drawing.Point(4, 22);
             this.tabHistorico.Name = "tabHistorico";
             this.tabHistorico.Size = new System.Drawing.Size(1045, 666);
@@ -594,27 +663,79 @@ namespace ControleAtivos
             // 
             // btnCarregarHistorico
             // 
-            this.btnCarregarHistorico.Location = new System.Drawing.Point(9, 21);
+            this.btnCarregarHistorico.Location = new System.Drawing.Point(9, 16);
             this.btnCarregarHistorico.Name = "btnCarregarHistorico";
-            this.btnCarregarHistorico.Size = new System.Drawing.Size(75, 23);
+            this.btnCarregarHistorico.Size = new System.Drawing.Size(75, 28);
             this.btnCarregarHistorico.TabIndex = 16;
             this.btnCarregarHistorico.Text = "Carregar";
             this.btnCarregarHistorico.UseVisualStyleBackColor = true;
+            this.btnCarregarHistorico.Click += new System.EventHandler(this.btnCarregarHistorico_Click);
+            // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SerialPort1_DataReceived);
             // 
             // dataGridViewHistorico
             // 
+            this.dataGridViewHistorico.AllowUserToAddRows = false;
+            this.dataGridViewHistorico.AllowUserToDeleteRows = false;
             this.dataGridViewHistorico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewHistorico.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Sala,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9});
             this.dataGridViewHistorico.Location = new System.Drawing.Point(9, 49);
             this.dataGridViewHistorico.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewHistorico.Name = "dataGridViewHistorico";
             this.dataGridViewHistorico.RowHeadersWidth = 51;
             this.dataGridViewHistorico.RowTemplate.Height = 24;
+            this.dataGridViewHistorico.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewHistorico.Size = new System.Drawing.Size(1009, 436);
-            this.dataGridViewHistorico.TabIndex = 15;
+            this.dataGridViewHistorico.TabIndex = 17;
             // 
-            // serialPort1
+            // Sala
             // 
-            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SerialPort1_DataReceived);
+            this.Sala.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Sala.HeaderText = "Sala";
+            this.Sala.Name = "Sala";
+            this.Sala.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Descrição";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Número de Serie";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn7.HeaderText = "RFID";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn8.HeaderText = "Data de Cadastro";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn9.HeaderText = "Data de Movimentação";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             // 
             // FormularioPrincipal
             // 
@@ -629,6 +750,7 @@ namespace ControleAtivos
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabConsulta.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAtivosSala)).EndInit();
             this.tabGerenciaAtivos.ResumeLayout(false);
             this.tabGerenciaAtivos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAtivos)).EndInit();
@@ -688,12 +810,24 @@ namespace ControleAtivos
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
         private System.Windows.Forms.TabPage tabHistorico;
-        private System.Windows.Forms.DataGridView dataGridViewHistorico;
         private System.Windows.Forms.Button btnCarregarHistorico;
         private System.Windows.Forms.DataGridViewTextBoxColumn DescricaoAtivo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Num_Serie;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
+        private System.Windows.Forms.DataGridView dataGridViewAtivosSala;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataMovimentacao;
+        private System.Windows.Forms.DataGridView dataGridViewHistorico;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sala;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
     }
 }
 

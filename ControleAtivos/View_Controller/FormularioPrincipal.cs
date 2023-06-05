@@ -19,6 +19,8 @@ namespace ControleAtivos
     {
         private List<Sala> salas;
         private List<Ativo> ativos;
+        private List<AtivoSala>  ativosSala;
+        private List<AtivoSala> historico;
 
         private void LoadSalas()
         {
@@ -53,6 +55,37 @@ namespace ControleAtivos
             }
 
         }
+
+        private void LoadAtivosSala()
+        {
+
+            dataGridViewAtivosSala.Rows.Clear();
+            AtivoSala pegarAtivosSala = new AtivoSala();
+            Sala sala = new Sala();
+            sala.Nome = cboConsultaSalas.Text;
+            pegarAtivosSala.Sala = sala;
+            this.ativosSala = pegarAtivosSala.GetAll();
+            foreach (AtivoSala ativoSala in ativosSala)
+            {
+                dataGridViewAtivosSala.Rows.Add(ativoSala.Ativo.Descricao, ativoSala.Ativo.Num_serie, ativoSala.Ativo.Rfid, ativoSala.Ativo.Data_cadastro.ToString("dd/MM/yyyy HH:mm:ss"), ativoSala.Data_movimentacao.ToString("dd/MM/yyyy HH:mm:ss"));
+            }
+
+        }
+
+        private void LoadHistorico()
+        {
+
+            dataGridViewHistorico.Rows.Clear();
+            AtivoSala pegarAtivosSala = new AtivoSala();             
+            this.historico = pegarAtivosSala.GetHistorico();
+            foreach (AtivoSala ativoSala in this.historico)
+            {
+                dataGridViewHistorico.Rows.Add(ativoSala.Sala.Nome,ativoSala.Ativo.Descricao, ativoSala.Ativo.Num_serie, ativoSala.Ativo.Rfid, ativoSala.Ativo.Data_cadastro.ToString("dd/MM/yyyy HH:mm:ss"), ativoSala.Data_movimentacao.ToString("dd/MM/yyyy HH:mm:ss"));
+            }
+
+        }
+
+
 
         private void ScanCOMPort()
         {
@@ -119,6 +152,8 @@ namespace ControleAtivos
             cboBaudRate.SelectedIndex = 9;
             LoadSalas();
             LoadAtivos();
+            LoadAtivosSala();
+            LoadHistorico();
         }
 
 
@@ -254,7 +289,6 @@ namespace ControleAtivos
         private void SerialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             this.Invoke(new EventHandler(ReceberDados));
-
         }
 
         private void ReceberDados(object sender, EventArgs e)
@@ -264,7 +298,31 @@ namespace ControleAtivos
             txtRecepcaoDados.Text += data;
 
             RFIDSala rfidSala = JsonConvert.DeserializeObject<RFIDSala>(data);
-            txtCodigoRfId.Text = rfidSala.Rfid;
+            String rfid = rfidSala.Rfid;
+            String nomeSala = rfidSala.Sala;
+            txtCodigoRfId.Text = rfid;
+
+            Ativo ativo = new Ativo();
+            ativo.Rfid = rfid;
+            
+            if (ativo.CheckByRFIDIfExists())
+            {
+                Sala sala = new Sala();
+                sala.Nome = nomeSala;
+                AtivoSala ativoSala = new AtivoSala();
+                ativoSala.Ativo = ativo;
+                ativoSala.Sala = sala;
+
+                if (ativoSala.CheckByRFIDIfItHasRelation()) {
+                    ativoSala.DeleteRelation();
+                    LoadAtivosSala();
+                    LoadHistorico();
+                } else
+                {
+                    ativoSala.SaveRelation();
+                    LoadAtivosSala();
+                }               
+            } 
 
         }
 
@@ -409,6 +467,16 @@ namespace ControleAtivos
                 }
             }
 
+        }
+
+        private void btnCarregarHistorico_Click(object sender, EventArgs e)
+        {
+            LoadHistorico();
+        }
+
+        private void cboConsultaSalas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadAtivosSala();
         }
     }
 }
